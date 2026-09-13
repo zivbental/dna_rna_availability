@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rnavail"
+version = "0.1.0"
+description = "Multi-tool accessibility prediction for RNA and DNA target regions"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+    # ViennaRNA supplies the partition-function engine every accessibility
+    # adapter is built on; without it the package can still run the external
+    # command-line tools, but nothing is available out of the box.
+    "ViennaRNA>=2.6",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=7"]
+# Only needed for `--html` visual reports (base-pair probability heatmaps and
+# structure diagrams); every other command works without it.
+viz = ["matplotlib>=3.7", "numpy>=1.24"]
+
+[project.scripts]
+rnavail = "rnavail.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["rnavail*"]
+
+[tool.setuptools.package-data]
+# EternaFold's trained CONTRAfold-format parameter file (BSD-3-Clause,
+# Stanford; see rnavail/adapters/eternafold.py), bundled so the eternafold
+# adapter needs no extra download step beyond the contrafold binary itself.
+rnavail = ["adapters/data/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["error::DeprecationWarning"]
