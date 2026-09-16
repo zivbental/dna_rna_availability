@@ -1,0 +1,114 @@
+{
+  "checks": {
+    "open_control_P_equals_one": true,
+    "closed_stem_P_below_1e_minus_6": true,
+    "hairpin_loop_P_above_0_99": true,
+    "stem_disruption_increases_accessibility": true,
+    "no_adapter_failures": true
+  },
+  "experimental": {
+    "CCW12": {
+      "gene": "YLR110C",
+      "lo": 50,
+      "hi": 110,
+      "figure": "2a,b",
+      "low": [
+        0.23249999999999998,
+        91,
+        8
+      ],
+      "high": [
+        4.43,
+        62,
+        8
+      ],
+      "pearson": 0.25221494589530125,
+      "spearman": 0.2186173799421613,
+      "n_measured": 61,
+      "window_order": "direction disagrees",
+      "model_correlations": {
+        "rnafold": {
+          "pearson": 0.25221494589530125,
+          "spearman": 0.2186173799421613
+        },
+        "rnastructure-partition": {
+          "pearson": 0.1574826274756189,
+          "spearman": 0.13852642156712422
+        },
+        "contrafold": {
+          "pearson": -0.13083353646263507,
+          "spearman": -0.1410119118567424
+        },
+        "eternafold": {
+          "pearson": -0.09532204111564695,
+          "spearman": -0.09154007853891659
+        }
+      }
+    },
+    "RPL41A": {
+      "gene": "YDL184C",
+      "lo": 50,
+      "hi": 120,
+      "figure": "2c,d",
+      "low": [
+        -4.170125,
+        113,
+        8
+      ],
+      "high": [
+        2.84,
+        89,
+        8
+      ],
+      "pearson": 0.5869888080330307,
+      "spearman": 0.6116559500392558,
+      "n_measured": 35,
+      "window_order": "direction agrees",
+      "model_correlations": {
+        "rnafold": {
+          "pearson": 0.5869888080330307,
+          "spearman": 0.6116559500392558
+        },
+        "rnastructure-partition": {
+          "pearson": 0.5729958332901038,
+          "spearman": 0.6186607135532188
+        },
+        "contrafold": {
+          "pearson": 0.6166785517950629,
+          "spearman": 0.6161389986881921
+        },
+        "eternafold": {
+          "pearson": 0.6198784830312299,
+          "spearman": 0.6309890973377938
+        }
+      }
+    }
+  },
+  "runs": [
+    {
+      "case": "open_AC",
+      "tools_failed": [],
+      "tools_skipped": []
+    },
+    {
+      "case": "closed_hairpin",
+      "tools_failed": [],
+      "tools_skipped": []
+    },
+    {
+      "case": "disrupted_hairpin",
+      "tools_failed": [],
+      "tools_skipped": []
+    },
+    {
+      "case": "CCW12",
+      "tools_failed": [],
+      "tools_skipped": []
+    },
+    {
+      "case": "RPL41A",
+      "tools_failed": [],
+      "tools_skipped": []
+    }
+  ]
+}

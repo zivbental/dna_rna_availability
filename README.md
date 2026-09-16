@@ -11,7 +11,7 @@ conditioning, and adapter capabilities behind each result, so shared
 calculations are not mistaken for independent evidence.
 
 ```bash
-rnavail scan transcript.fa --window 20 --keep 10 --save-run
+rnavail scan transcript.fa --window 25 --keep 25 --save-run
 ```
 
 To carry condition-linked experimental annotations alongside a structural run,
@@ -24,7 +24,7 @@ rnavail evaluate transcript.fa --region 205-224 --condition-id buffer-A \
 ```
 
 The track format and its sequence-hash requirement are documented in the
-[implementation proposal](docs/09-rna-accessibility-implementation-proposal.md#implemented-json-overlay).
+[implementation status](docs/09-rna-accessibility-implementation-proposal.md#validated-probing-and-evidence).
 
 ```
       region      len     rank    seedP    P_unp   dGopen    dG/nt
@@ -37,10 +37,13 @@ The track format and its sequence-hash requirement are documented in the
 
 ## Documentation
 
-Read in order for a full picture, or jump to what you need.
+The documentation is written in layers. Start with the reading guide if RNA
+folding is new to you; each technical page begins with a plain-language answer
+and then develops the chemistry, mathematics, algorithm and implementation.
 
 | | |
 |---|---|
+| **[0. Reading guide and glossary](docs/00-reading-guide.md)** | Where to start, a map of the repository, and definitions of the terms used throughout. |
 | **[1. The question](docs/01-the-question.md)** | What "available" means, why it is not obvious, and the mistake this tool exists to prevent. *No biology assumed.* |
 | **[2. How it works](docs/02-pipeline.md)** | Top-down walk through every step, from FASTA in to ranked list out — what each does, why, and the algorithm behind it. |
 | **[3. Architecture](docs/03-architecture.md)** | The components, the data structures, and how they connect. |
@@ -49,7 +52,9 @@ Read in order for a full picture, or jump to what you need.
 | **[6. Reading the output](docs/06-outputs.md)** | Every output file, and a worked example of interpreting a real report. |
 | **[7. Limitations](docs/07-limitations.md)** | What this cannot tell you. Read before trusting a number. |
 | **[8. Literature review](docs/08-rna-accessibility-literature-review.md)** | Evidence for further constraints: binding pathways, kinetics, tertiary structure, solution conditions, cellular context and assay interpretation. |
-| **[9. Implementation proposal](docs/09-rna-accessibility-implementation-proposal.md)** | Delivered implementation status and the remaining staged plan for traceable extensions. |
+| **[9. Status and roadmap](docs/09-rna-accessibility-implementation-proposal.md)** | What is implemented now, what remains outside scope, and the evidence required for extensions. |
+| **[10. Mathematical and chemical foundations](docs/10-mathematical-and-chemical-foundations.md)** | The deeper derivations: ensembles, partition functions, opening free energy, salt, probing constraints, sampling uncertainty and score transforms. |
+| **[11. Command reference](docs/11-command-reference.md)** | Current commands, defaults, common recipes, and which options are modeled versus recorded only. |
 
 ---
 
@@ -105,7 +110,7 @@ pip install -e .[viz]   # matplotlib, for the visual reports
 
 ```bash
 # "I don't know where to look" — tile the transcript and rank every window
-rnavail scan transcript.fa --window 20 --keep 10 --save-run
+rnavail scan transcript.fa --window 25 --keep 25 --save-run
 
 # "I know where to look" — characterise specific regions in depth
 rnavail evaluate transcript.fa --region 205-224 --region loop:117-136 -v
@@ -135,7 +140,9 @@ knob — read it off your binder's footprint:
 | sgRNA spacer | 20 nt |
 | toehold trigger | 20–30 nt |
 
-The choice matters: on a real GFP transcript the top-15 sites at window
+The current CLI default is 25 nt and the default shortlist is 25 candidates.
+Those defaults are convenient starting points, not biological constants. The
+choice matters: on a real GFP transcript the top-15 sites at window
 length 8 and at length 20 shared **exactly one site**. Use
 `--length-robustness` to check whether a candidate survives nearby choices.
 
@@ -167,9 +174,8 @@ use `--molecule dna` for target self-folding only.
 ## What it deliberately does not do
 
 **`rnavail` answers a single-molecule question.** It does not predict whether
-one RNA binds another — that is a separate, much harder, still largely
-unsolved problem, and adapters for it were built, worked, and were removed
-once the scope was fixed.
+one RNA binds another — that is a separate, much harder problem and is not a
+current adapter layer.
 
 An open site is **necessary, not sufficient**. A top-ranked candidate here is
 a shortlist entry, not a validated design.

@@ -4,6 +4,11 @@
 the pieces are*, why they are separated the way they are, and how data moves
 between them.
 
+**For non-programmers:** the architecture is a set of translators around
+scientific programs. Every translator receives the same question and returns
+the same result shape. That shared vocabulary makes comparison possible
+without pretending that every number has the same meaning.
+
 ---
 
 ## 3.1 The layer cake
@@ -257,7 +262,8 @@ against RNAstructure against CONTRAfold without special-casing each tool.
 | **Per-base descriptors** *(diagnostic only)* | `mean_base_unpaired` · `min_base_unpaired` · `paired_fraction` · `shannon_entropy` |
 | **Global structure** | `mfe` · `ensemble_free_energy` · `mfe_ensemble_gap` · `mean_bp_distance` |
 | **Robustness (model)** | `dg_open_spread` · `rank_stability` |
-| **Robustness (sequence)** | `ribosnitch_spread` · `context_dg_spread` · `window_length_spread` |
+| **Robustness (sequence/context)** | `ribosnitch_spread` · `context_dg_spread` |
+| **Robustness (footprint length)** | `window_length_spread` |
 | **Beyond nested structure** | `gquad_score` · `pseudoknot_paired_fraction` |
 | **Kinetics** | `co_tx_trap_length` |
 | **Engine disagreement** | `window_exact_gap` |
@@ -282,7 +288,7 @@ row, with a fix hint, rather than crashing the run.
 
 **2. Did it work?** `run_accessibility()` wraps `compute_accessibility()` in
 a try/except and converts any exception into a `failed` `ToolResult` carrying
-the error. One broken tool never costs you the other ten.
+the error. One broken tool never costs you the other adapters.
 
 ```python
 @register
@@ -402,8 +408,8 @@ Python `ValueError` before the call can reach the C library, so `--gquad`
 with a windowed engine degrades to one failed adapter instead of killing the
 interpreter. Regression-tested.
 
-**kinwalker's runtime.** Measured in this environment: 100 nt → 7.5 s, 140 nt
-→ 17.7 s, 150 nt → did not finish in 30 s. Since it runs by default and folds
+**kinwalker's runtime.** A historical measurement in this environment gave
+100 nt → 7.5 s, 140 nt → 17.7 s, and 150 nt → no finish in 30 s. Since it runs by default and folds
 the whole molecule, a transcript-length target would hang every default run.
 The adapter refuses above 140 nt with a clear message and an
 `options={"kinwalker_max_length": N}` escape hatch.

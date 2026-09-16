@@ -1,0 +1,2259 @@
+{
+  "report_schema_version": "2.0",
+  "mode": "evaluate",
+  "sequence": {
+    "name": "YLR110C",
+    "length": 507,
+    "molecule": "rna",
+    "gc_fraction": 0.4556,
+    "sha256": "c02f81f433bd04c3b6fee68b6a160878dd8e6964263b2ed0d874f2458654cad0"
+  },
+  "settings": {
+    "temperature_c": 37,
+    "param_set": "turner2004",
+    "dangles": 2,
+    "no_lonely_pairs": false,
+    "no_gu": false,
+    "no_gu_closure": false,
+    "gquad": false,
+    "circular": false,
+    "salt_molar": null,
+    "max_bp_span": 507,
+    "global_max_bp_span": null,
+    "window_size": 507,
+    "max_unpaired": 30
+  },
+  "protocol": "T37/turner2004/d2/L507/W507/GLall",
+  "recognition_spec_id": "recognition:de86963dd9575eda",
+  "recognition": {
+    "binder_class": "structural_probe",
+    "partner_sequence": null,
+    "partner_chemistry": "unspecified",
+    "seed_mode": "any",
+    "seed_lengths": [
+      8
+    ],
+    "seed_start": null,
+    "listed_seed_starts": [],
+    "orientation": "unspecified",
+    "endpoint": "structural_opening"
+  },
+  "condition": {
+    "condition_id": "validation_model_37C",
+    "temperature_c": 37,
+    "sodium_molar": null,
+    "potassium_molar": null,
+    "magnesium_total_molar": null,
+    "magnesium_free_molar": null,
+    "ph": null,
+    "incubation_seconds": null,
+    "preparation": "unspecified",
+    "partner_concentration_molar": null,
+    "crowding_agent": null,
+    "crowding_concentration": null,
+    "organism": null,
+    "cell_type": null,
+    "compartment": null
+  },
+  "probing": null,
+  "evidence_tracks": [],
+  "tools": {
+    "ran": [
+      "rnaplfold",
+      "rnaplfold-cli",
+      "vienna-exact",
+      "rnafold",
+      "ensemble-sample",
+      "rnastructure-partition",
+      "contrafold",
+      "eternafold"
+    ],
+    "failed": [],
+    "skipped": []
+  },
+  "candidates": [
+    {
+      "region": {
+        "start": 62,
+        "end": 69,
+        "length": 8,
+        "name": "PARS_high_8nt"
+      },
+      "subsequence": "UCGCUUCU",
+      "metrics": {
+        "mean_base_unpaired": 0.3849038230158731,
+        "min_base_unpaired": 0.020566660533324354,
+        "paired_fraction": 0.578189857399734,
+        "shannon_entropy": 0.4000452819375186,
+        "window_exact_gap": -3.9302903512172804e-05,
+        "p_unpaired": 0.01364726918312587,
+        "dg_open": 2.6466598510742188,
+        "dg_open_per_nt": 0.33083248138427734
+      },
+      "consensus": {
+        "p_unpaired": {
+          "metric": "p_unpaired",
+          "n_tools": 4,
+          "n_eligible": 4,
+          "n_primary": 3,
+          "n_independent": 2,
+          "median": 0.013646834059875455,
+          "spread": 8.702465008284671e-07,
+          "by_tool": {
+            "rnaplfold": 0.013646397873250086,
+            "rnaplfold-cli": 0.0136464,
+            "vienna-exact": 0.01364726918312587,
+            "ensemble-sample": 0.0154
+          },
+          "groups": {
+            "rnaplfold": "vienna-rnaplfold",
+            "rnaplfold-cli": "vienna-rnaplfold",
+            "vienna-exact": "vienna-global-pf",
+            "ensemble-sample": "vienna-global-pf"
+          },
+          "eligible_for_primary": [
+            "rnaplfold",
+            "rnaplfold-cli",
+            "vienna-exact",
+            "ensemble-sample"
+          ],
+          "primary_for_median": [
+            "rnaplfold",
+            "rnaplfold-cli",
+            "vienna-exact"
+          ],
+          "excluded_from_median": {
+            "ensemble-sample": "monte_carlo_probability"
+          },
+          "excluded_for_conditioning": {},
+          "excluded_for_protocol": {}
+        },
+        "dg_open": {
+          "metric": "dg_open",
+          "n_tools": 4,
+          "n_eligible": 4,
+          "n_primary": 3,
+          "n_independent": 2,
+          "median": 2.646679502525975,
+          "spread": 3.9302903512172804e-05,
+          "by_tool": {
+            "rnaplfold": 2.6466992020044176,
+            "rnaplfold-cli": 2.6466991059510447,
+            "vienna-exact": 2.6466598510742188,
+            "ensemble-sample": 2.572189724827998
+          },
+          "groups": {
+            "rnaplfold": "vienna-rnaplfold",
+            "rnaplfold-cli": "vienna-rnaplfold",
+            "vienna-exact": "vienna-global-pf",
+            "ensemble-sample": "vienna-global-pf"
+          },
+          "eligible_for_primary": [
+            "rnaplfold",
+            "rnaplfold-cli",
+            "vienna-exact",
+            "ensemble-sample"
+          ],
+          "primary_for_median": [
+            "rnaplfold",
+            "rnaplfold-cli",
+            "vienna-exact"
+          ],
+          "excluded_from_median": {
+            "ensemble-sample": "monte_carlo_probability"
+          },
+          "excluded_for_conditioning": {},
+          "excluded_for_protocol": {}
+        },
+        "dg_open_per_nt": {
+          "metric": "dg_open_per_nt",
+          "n_tools": 4,
+          "n_eligible": 4,
+          "n_primary": 3,
+          "n_independent": 2,
+          "median": 0.33083493781574685,
+          "spread": 4.9128629390216005e-06,
+          "by_tool": {
+            "rnaplfold": 0.3308374002505522,
+            "rnaplfold-cli": 0.3308373882438806,
+            "vienna-exact": 0.33083248138427734,
+            "ensemble-sample": 0.32152371560349974
+          },
+          "groups": {
+            "rnaplfold": "vienna-rnaplfold",
+            "rnaplfold-cli": "vienna-rnaplfold",
+            "vienna-exact": "vienna-global-pf",
+            "ensemble-sample": "vienna-global-pf"
+          },
+          "eligible_for_primary": [
+            "rnaplfold",
+            "rnaplfold-cli",
+            "vienna-exact",
+            "ensemble-sample"
+          ],
+          "primary_for_median": [
+            "rnaplfold",
+            "rnaplfold-cli",
+            "vienna-exact"
+          ],
+          "excluded_from_median": {
+            "ensemble-sample": "monte_carlo_probability"
+          },
+          "excluded_for_conditioning": {},
+          "excluded_for_protocol": {}
+        },
+        "mean_base_unpaired": {
+          "metric": "mean_base_unpaired",
+          "n_tools": 6,
+          "n_eligible": 4,
+          "n_primary": 3,
+          "n_independent": 3,
+          "median": 0.3849038230158731,
+          "spread": 0.07381263916880021,
+          "by_tool": {
+            "rnaplfold": 0.3849038230158731,
+            "rnafold": 0.38490382301586584,
+            "ensemble-sample": 0.386625,
+            "rnastructure-partition": 0.45871646218466605,
+            "contrafold": 0.8616146175,
+            "eternafold": 0.758026925
+          },
+          "groups": {
+            "rnaplfold": "vienna-rnaplfold",
+            "rnafold": "vienna-global-pf",
+            "ensemble-sample": "vienna-global-pf",
+            "rnastructure-partition": "rnastructure",
+            "contrafold": "contrafold",
+            "eternafold": "eternafold"
+          },
+          "eligible_for_primary": [
+            "rnaplfold",
+            "rnafold",
+            "ensemble-sample",
+            "rnastructure-partition"
+          ],
+          "primary_for_median": [
+            "rnaplfold",
+            "rnafold",
+            "rnastructure-partition"
+          ],
+          "excluded_from_median": {
+            "ensemble-sample": "monte_carlo_probability"
+          },
+          "excluded_for_conditioning": {},
+          "excluded_for_protocol": {
+            "contrafold": {
+              "max_bp_span": "adapter does not declare support for this setting",
+              "window_size": "adapter does not declare support for this setting"
+            },
+            "eternafold": {
+              "max_bp_span": "adapter does not declare support for this setting",
+              "window_size": "adapter does not declare support for this setting"
+            }
+          }
+        },
+        "min_base_unpaired": {
+          "metric": "min_base_unpaired",
+          "n_tools": 5,
+          "n_eligible": 3,
+          "n_primary": 3,
+          "n_independent": 3,
+          "median": 0.020566660533324354,
+          "spread": 0.030168468245133195,
+          "by_tool": {
+            "rnaplfold": 0.020566660533324354,
+            "rnafold": 0.020566660533318237,
+            "rnastructure-partition": 0.05073512877845143,
+            "contrafold": 0.67048942,
+            "eternafold": 0.33716668000000005
+          },
+          "groups": {
+            "rnaplfold": "vienna-rnaplfold",
+            "rnafold": "vienna-global-pf",
+            "rnastructure-partition": "rnastructure",
+            "contrafold": "contrafold",
+            "eternafold": "eternafold"
+          },
+          "eligible_for_primary": [
+            "rnaplfold",
+            "rnafold",
+            "rnastructure-partition"
+          ],
+          "primary_for_median": [
+            "rnaplfold",
+            "rnafold",
+            "rnastructure-partition"
+          ],
+          "excluded_from_median": {},
+          "excluded_for_conditioning": {},
+          "excluded_for_protocol": {
+            "contrafold": {
+              "max_bp_span": "adapter does not declare support for this setting",
+              "window_size": "adapter does not declare support for this setting"
+            },
+            "eternafold": {
+              "max_bp_span": "adapter does not declare support for this setting",
+              "window_size": "adapter does not declare support for this setting"
+            }
+          }
+        },
+        "seed_start": {
+          "metric": "seed_start",
+          "n_tools": 4,
+          "n_eligible": 4,
+          "n_primary": 3,
+          "n_independent": 2,
+          "median": 62.0,
+          "spread": 0.0,
+          "by_tool": {
+            "rnaplfold": 62.0,
+            "rnaplfold-cli": 62.0,
+            "vienna-exact": 62.0,
+            "ensemble-sample": 62.0
+          },
+          "groups": {
+            "rnaplfold": "vienna-rnaplfold",
+            "rnaplfold-cli": "vienna-rnaplfold",
+            "vienna-exact": "vienna-global-pf",
+            "ensemble-sample": "vienna-global-pf"
+          },
+          "eligible_for_primary": [
+            "rnaplfold",
+            "rnaplfold-cli",
+            "vienna-exact",
+            "ensemble-sample"
+          ],
+          "primary_for_median": [
+            "rnaplfold",
+            "rnaplfold-cli",
+            "vienna-exact"
+          ],
+          "excluded_from_median": {
+            "ensemble-sample": "monte_carlo_probability"
+          },
+          "excluded_for_conditioning": {},
+          "excluded_for_protocol": {}
+        },
+        "seed_length": {
+          "metric": "seed_length",
+          "n_tools": 4,
+          "n_eligible": 4,
+          "n_primary": 3,
+          "n_independent": 2,
+          "median": 8.0,
+          "spread": 0.0,
+          "by_tool": {
+            "rnaplfold": 8.0,
+            "rnaplfold-cli": 8.0,
+            "vienna-exact": 8.0,
+            "ensemble-sample": 8.0
+          },
+          "groups": {
+            "rnaplfold": "vienna-rnaplfold",
+            "rnaplfold-cli": "vienna-rnaplfold",
+            "vienna-exact": "vienna-global-pf",
+            "ensemble-sample": "vienna-global-pf"
+          },
+          "eligible_for_primary": [
+            "rnaplfold",
+            "rnaplfold-cli",
+            "vienna-exact",
+            "ensemble-sample"
+          ],
+          "primary_for_median": [
+            "rnaplfold",
+            "rnaplfold-cli",
+            "vienna-exact"
+          ],
+          "excluded_from_median": {
+            "ensemble-sample": "monte_carlo_probability"
+          },
+          "excluded_for_conditioning": {},
+          "excluded_for_protocol": {}
+        },
+        "seed_p_unpaired": {
+          "metric": "seed_p_unpaired",
+          "n_tools": 4,
+          "n_eligible": 4,
+          "n_primary": 3,
+          "n_independent": 2,
+          "median": 0.013646834059875455,
+          "spread": 8.702465008284671e-07,
+          "by_tool": {
+            "rnaplfold": 0.013646397873250086,
+            "rnaplfold-cli": 0.0136464,
+            "vienna-exact": 0.01364726918312587,
+            "ensemble-sample": 0.0154
+          },
+          "groups": {
+            "rnaplfold": "vienna-rnaplfold",
+            "rnaplfold-cli": "vienna-rnaplfold",
+            "vienna-exact": "vienna-global-pf",
+            "ensemble-sample": "vienna-global-pf"
+          },
+          "eligible_for_primary": [
+            "rnaplfold",
+            "rnaplfold-cli",
+            "vienna-exact",
+            "ensemble-sample"
+          ],
+          "primary_for_median": [
+            "rnaplfold",
+            "rnaplfold-cli",
+            "vienna-exact"
+          ],
+          "excluded_from_median": {
+            "ensemble-sample": "monte_carlo_probability"
+          },
+          "excluded_for_conditioning": {},
+          "excluded_for_protocol": {}
+        },
+        "seed_dg_open": {
+          "metric": "seed_dg_open",
+          "n_tools": 3,
+          "n_eligible": 3,
+          "n_primary": 3,
+          "n_independent": 2,
+          "median": 2.646679502525975,
+          "spread": 3.9302903512172804e-05,
+          "by_tool": {
+            "rnaplfold": 2.6466992020044176,
+            "rnaplfold-cli": 2.6466991059510447,
+            "vienna-exact": 2.6466598510742188
+          },
+          "groups": {
+            "rnaplfold": "vienna-rnaplfold",
+            "rnaplfold-cli": "vienna-rnaplfold",
+            "vienna-exact": "vienna-global-pf"
+          },
+          "eligible_for_primary": [
+            "rnaplfold",
+            "rnaplfold-cli",
+            "vienna-exact"
+          ],
+          "primary_for_median": [
+            "rnaplfold",
+            "rnaplfold-cli",
+            "vienna-exact"
+          ],
+          "excluded_from_median": {},
+          "excluded_for_conditioning": {},
+          "excluded_for_protocol": {}
+        },
+        "paired_fraction": {
+          "metric": "paired_fraction",
+          "n_tools": 4,
+          "n_eligible": 2,
+          "n_primary": 2,
+          "n_independent": 2,
+          "median": 0.578189857399734,
+          "spread": 0.0738126391688001,
+          "by_tool": {
+            "rnafold": 0.6150961769841341,
+            "rnastructure-partition": 0.541283537815334,
+            "contrafold": 0.1383853825,
+            "eternafold": 0.24197307499999998
+          },
+          "groups": {
+            "rnafold": "vienna-global-pf",
+            "rnastructure-partition": "rnastructure",
+            "contrafold": "contrafold",
+            "eternafold": "eternafold"
+          },
+          "eligible_for_primary": [
+            "rnafold",
+            "rnastructure-partition"
+          ],
+          "primary_for_median": [
+            "rnafold",
+            "rnastructure-partition"
+          ],
+          "excluded_from_median": {},
+          "excluded_for_conditioning": {},
+          "excluded_for_protocol": {
+            "contrafold": {
+              "max_bp_span": "adapter does not declare support for this setting",
+              "window_size": "adapter does not declare support for this setting"
+            },
+            "eternafold": {
+              "max_bp_span": "adapter does not declare support for this setting",
+              "window_size": "adapter does not declare support for this setting"
+            }
+          }
+        },
+        "shannon_entropy": {
+          "metric": "shannon_entropy",
+          "n_tools": 1,
+          "n_eligible": 1,
+          "n_primary": 1,
+          "n_independent": 1,
+          "median": 0.4000452819375186,
+          "spread": 0.0,
+          "by_tool": {
+            "rnafold": 0.4000452819375186
+          },
+          "groups": {
+            "rnafold": "vienna-global-pf"
+          },
+          "eligible_for_primary": [
+            "rnafold"
+          ],
+          "primary_for_median": [
+            "rnafold"
+          ],
+          "excluded_from_median": {},
+          "excluded_for_conditioning": {},
+          "excluded_for_protocol": {}
+        }
+      },
+      "score": {
+        "heuristic_rank_score": 0.7043868617007607,
+        "score": 0.7043868617007607,
+        "coverage": 0.5,
+        "missing_metrics": [
+          "dg_open_spread",
+          "window_length_spread"
+        ],
+        "components": [
+          {
+            "metric": "dg_open_per_nt",
+            "label": "opening cost per nucleotide",
+            "weight": 1.5,
+            "value": 0.33083248138427734,
+            "desirability": 0.7043868617007607,
+            "present": true
+          },
+          {
+            "metric": "dg_open_spread",
+            "label": "robustness across model settings",
+            "weight": 0.75,
+            "value": null,
+            "desirability": null,
+            "present": false
+          },
+          {
+            "metric": "window_length_spread",
+            "label": "robustness across window length",
+            "weight": 0.75,
+            "value": null,
+            "desirability": null,
+            "present": false
+          }
+        ]
+      },
+      "heuristic_rank_score": 0.7043868617007607,
+      "notes": [
+        "seed accessibility is not used because the declared binder has no complementary nucleation mechanism; any raw seed readings are structural diagnostics, not affinity evidence"
+      ],
+      "detail": {
+        "seed_nucleation": {
+          "status": "not_applicable",
+          "raw_observations": "retained with each tool result but excluded from candidate metrics, screening, and the heuristic rank"
+        }
+      },
+      "primary_opening_observation_id": "vienna-exact:62-69:unconditioned",
+      "opening_observations": [
+        {
+          "observation_id": "rnaplfold:62-69:unconditioned",
+          "tool": "rnaplfold",
+          "interval": {
+            "start": 62,
+            "end": 69
+          },
+          "p_unpaired": 0.013646397873250081,
+          "dg_open_kcal_mol": 2.6466992020044176,
+          "temperature_c": 37.0,
+          "event": "all_target_nucleotides_unpaired",
+          "model_family": "vienna-turner",
+          "algorithm": "RNAplfold-window-pf",
+          "sequence_scope": "local_window",
+          "conditioning_id": "unconditioned",
+          "estimate_kind": "point",
+          "p_lower_bound": null,
+          "p_upper_bound": null,
+          "seed": {
+            "start": 62,
+            "length": 8,
+            "p_unpaired": 0.013646397873250081,
+            "dg_open_kcal_mol": 2.6466992020044176
+          },
+          "censor_reason": null
+        },
+        {
+          "observation_id": "rnaplfold-cli:62-69:unconditioned",
+          "tool": "rnaplfold-cli",
+          "interval": {
+            "start": 62,
+            "end": 69
+          },
+          "p_unpaired": 0.013646399999999994,
+          "dg_open_kcal_mol": 2.6466991059510447,
+          "temperature_c": 37.0,
+          "event": "all_target_nucleotides_unpaired",
+          "model_family": "vienna-turner",
+          "algorithm": "RNAplfold-window-pf",
+          "sequence_scope": "local_window",
+          "conditioning_id": "unconditioned",
+          "estimate_kind": "point",
+          "p_lower_bound": null,
+          "p_upper_bound": null,
+          "seed": {
+            "start": 62,
+            "length": 8,
+            "p_unpaired": 0.013646399999999994,
+            "dg_open_kcal_mol": 2.6466991059510447
+          },
+          "censor_reason": null
+        },
+        {
+          "observation_id": "vienna-exact:62-69:unconditioned",
+          "tool": "vienna-exact",
+          "interval": {
+            "start": 62,
+            "end": 69
+          },
+          "p_unpaired": 0.01364726918312587,
+          "dg_open_kcal_mol": 2.6466598510742188,
+          "temperature_c": 37.0,
+          "event": "all_target_nucleotides_unpaired",
+          "model_family": "vienna-turner",
+          "algorithm": "constrained-partition-function",
+          "sequence_scope": "global_ensemble",
+          "conditioning_id": "unconditioned",
+          "estimate_kind": "point",
+          "p_lower_bound": null,
+          "p_upper_bound": null,
+          "seed": {
+            "start": 62,
+            "length": 8,
+            "p_unpaired": 0.01364726918312587,
+            "dg_open_kcal_mol": 2.6466598510742188
+          },
+          "censor_reason": null
+        },
+        {
+          "observation_id": "ensemble-sample:62-69:unconditioned",
+          "tool": "ensemble-sample",
+          "interval": {
+            "start": 62,
+            "end": 69
+          },
+          "p_unpaired": 0.015400000000000006,
+          "dg_open_kcal_mol": 2.572189724827998,
+          "temperature_c": 37.0,
+          "event": "all_target_nucleotides_unpaired",
+          "model_family": "vienna-turner",
+          "algorithm": "boltzmann-stochastic-backtracking",
+          "sequence_scope": "global_ensemble",
+          "conditioning_id": "unconditioned",
+          "estimate_kind": "point",
+          "p_lower_bound": null,
+          "p_upper_bound": null,
+          "seed": {
+            "start": 62,
+            "length": 8,
+            "p_unpaired": 0.0154,
+            "dg_open_kcal_mol": 2.572189724827998
+          },
+          "censor_reason": null
+        }
+      ],
+      "biological_evidence": []
+    },
+    {
+      "region": {
+        "start": 91,
+        "end": 98,
+        "length": 8,
+        "name": "PARS_low_8nt"
+      },
+      "subsequence": "GCUUCUGC",
+      "metrics": {
+        "mean_base_unpaired": 0.5057776213869054,
+        "min_base_unpaired": 0.06727971345678181,
+        "paired_fraction": 0.48318550641400065,
+        "shannon_entropy": 1.2456957635149315,
+        "window_exact_gap": -4.5513898069948766e-05,
+        "p_unpaired": 0.0073482865983074625,
+        "dg_open": 3.0282135009765625,
+        "dg_open_per_nt": 0.3785266876220703
+      },
+      "consensus": {
+        "p_unpaired": {
+          "metric": "p_unpaired",
+          "n_tools": 4,
+          "n_eligible": 4,
+          "n_primary": 3,
+          "n_independent": 2,
+          "median": 0.0073480152857921185,
+          "spread": 5.426250306887412e-07,
+          "by_tool": {
+            "rnaplfold": 0.007347743946553547,
+            "rnaplfold-cli": 0.007347744,
+            "vienna-exact": 0.0073482865983074625,
+            "ensemble-sample": 0.0083
+          },
+          "groups": {
+            "rnaplfold": "vienna-rnaplfold",
+            "rnaplfold-cli": "vienna-rnaplfold",
+            "vienna-exact": "vienna-global-pf",
+            "ensemble-sample": "vienna-global-pf"
+          },
+          "eligible_for_primary": [
+            "rnaplfold",
+            "rnaplfold-cli",
+            "vienna-exact",
+            "ensemble-sample"
+          ],
+          "primary_for_median": [
+            "rnaplfold",
+            "rnaplfold-cli",
+            "vienna-exact"
+          ],
+          "excluded_from_median": {
+            "ensemble-sample": "monte_carlo_probability"
+          },
+          "excluded_for_conditioning": {},
+          "excluded_for_protocol": {}
+        },
+        "dg_open": {
+          "metric": "dg_open",
+          "n_tools": 4,
+          "n_eligible": 4,
+          "n_primary": 3,
+          "n_independent": 2,
+          "median": 3.0282362579255975,
+          "spread": 4.5513898069948766e-05,
+          "by_tool": {
+            "rnaplfold": 3.028259017116186,
+            "rnaplfold-cli": 3.028259012633079,
+            "vienna-exact": 3.0282135009765625,
+            "ensemble-sample": 2.9531515259197563
+          },
+          "groups": {
+            "rnaplfold": "vienna-rnaplfold",
+            "rnaplfold-cli": "vienna-rnaplfold",
+            "vienna-exact": "vienna-global-pf",
+            "ensemble-sample": "vienna-global-pf"
+          },
+          "eligible_for_primary": [
+            "rnaplfold",
+            "rnaplfold-cli",
+            "vienna-exact",
+            "ensemble-sample"
+          ],
+          "primary_for_median": [
+            "rnaplfold",
+            "rnaplfold-cli",
+            "vienna-exact"
+          ],
+          "excluded_from_median": {
+            "ensemble-sample": "monte_carlo_probability"
+          },
+          "excluded_for_conditioning": {},
+          "excluded_for_protocol": {}
+        },
+        "dg_open_per_nt": {
+          "metric": "dg_open_per_nt",
+          "n_tools": 4,
+          "n_eligible": 4,
+          "n_primary": 3,
+          "n_independent": 2,
+          "median": 0.3785295322406997,
+          "spread": 5.689237258743596e-06,
+          "by_tool": {
+            "rnaplfold": 0.37853237713952326,
+            "rnaplfold-cli": 0.37853237657913485,
+            "vienna-exact": 0.3785266876220703,
+            "ensemble-sample": 0.36914394073996953
+          },
+          "groups": {
+            "rnaplfold": "vienna-rnaplfold",
+            "rnaplfold-cli": "vienna-rnaplfold",
+            "vienna-exact": "vienna-global-pf",
+            "ensemble-sample": "vienna-global-pf"
+          },
+          "eligible_for_primary": [
+            "rnaplfold",
+            "rnaplfold-cli",
+            "vienna-exact",
+            "ensemble-sample"
+          ],
+          "primary_for_median": [
+            "rnaplfold",
+            "rnaplfold-cli",
+            "vienna-exact"
+          ],
+          "excluded_from_median": {
+            "ensemble-sample": "monte_carlo_probability"
+          },
+          "excluded_for_conditioning": {},
+          "excluded_for_protocol": {}
+        },
+        "mean_base_unpaired": {
+          "metric": "mean_base_unpaired",
+          "n_tools": 6,
+          "n_eligible": 4,
+          "n_primary": 3,
+          "n_independent": 3,
+          "median": 0.5057776213869054,
+          "spread": 0.022073744398205863,
+          "by_tool": {
+            "rnaplfold": 0.5057776213869054,
+            "rnafold": 0.5057776213868964,
+            "ensemble-sample": 0.507625,
+            "rnastructure-partition": 0.5278513657851023,
+            "contrafold": 0.73640432625,
+            "eternafold": 0.64632107125
+          },
+          "groups": {
+            "rnaplfold": "vienna-rnaplfold",
+            "rnafold": "vienna-global-pf",
+            "ensemble-sample": "vienna-global-pf",
+            "rnastructure-partition": "rnastructure",
+            "contrafold": "contrafold",
+            "eternafold": "eternafold"
+          },
+          "eligible_for_primary": [
+            "rnaplfold",
+            "rnafold",
+            "ensemble-sample",
+            "rnastructure-partition"
+          ],
+          "primary_for_median": [
+            "rnaplfold",
+            "rnafold",
+            "rnastructure-partition"
+          ],
+          "excluded_from_median": {
+            "ensemble-sample": "monte_carlo_probability"
+          },
+          "excluded_for_conditioning": {},
+          "excluded_for_protocol": {
+            "contrafold": {
+              "max_bp_span": "adapter does not declare support for this setting",
+              "window_size": "adapter does not declare support for this setting"
+            },
+            "eternafold": {
+              "max_bp_span": "adapter does not declare support for this setting",
+              "window_size": "adapter does not declare support for this setting"
+            }
+          }
+        },
+        "min_base_unpaired": {
+          "metric": "min_base_unpaired",
+          "n_tools": 5,
+          "n_eligible": 3,
+          "n_primary": 3,
+          "n_independent": 3,
+          "median": 0.06727971345678181,
+          "spread": 0.03527164159370644,
+          "by_tool": {
+            "rnaplfold": 0.06727971345678181,
+            "rnafold": 0.06727971345677497,
+            "rnastructure-partition": 0.10255135505048141,
+            "contrafold": 0.51654774,
+            "eternafold": 0.37818838
+          },
+          "groups": {
+            "rnaplfold": "vienna-rnaplfold",
+            "rnafold": "vienna-global-pf",
+            "rnastructure-partition": "rnastructure",
+            "contrafold": "contrafold",
+            "eternafold": "eternafold"
+          },
+          "eligible_for_primary": [
+            "rnaplfold",
+            "rnafold",
+            "rnastructure-partition"
+          ],
+          "primary_for_median": [
+            "rnaplfold",
+            "rnafold",
+            "rnastructure-partition"
+          ],
+          "excluded_from_median": {},
+          "excluded_for_conditioning": {},
+          "excluded_for_protocol": {
+            "contrafold": {
+              "max_bp_span": "adapter does not declare support for this setting",
+              "window_size": "adapter does not declare support for this setting"
+            },
+            "eternafold": {
+              "max_bp_span": "adapter does not declare support for this setting",
+              "window_size": "adapter does not declare support for this setting"
+            }
+          }
+        },
+        "seed_start": {
+          "metric": "seed_start",
+          "n_tools": 4,
+          "n_eligible": 4,
+          "n_primary": 3,
+          "n_independent": 2,
+          "median": 91.0,
+          "spread": 0.0,
+          "by_tool": {
+            "rnaplfold": 91.0,
+            "rnaplfold-cli": 91.0,
+            "vienna-exact": 91.0,
+            "ensemble-sample": 91.0
+          },
+          "groups": {
+            "rnaplfold": "vienna-rnaplfold",
+            "rnaplfold-cli": "vienna-rnaplfold",
+            "vienna-exact": "vienna-global-pf",
+            "ensemble-sample": "vienna-global-pf"
+          },
+          "eligible_for_primary": [
+            "rnaplfold",
+            "rnaplfold-cli",
+            "vienna-exact",
+            "ensemble-sample"
+          ],
+          "primary_for_median": [
+            "rnaplfold",
+            "rnaplfold-cli",
+            "vienna-exact"
+          ],
+          "excluded_from_median": {
+            "ensemble-sample": "monte_carlo_probability"
+          },
+          "excluded_for_conditioning": {},
+          "excluded_for_protocol": {}
+        },
+        "seed_length": {
+          "metric": "seed_length",
+          "n_tools": 4,
+          "n_eligible": 4,
+          "n_primary": 3,
+          "n_independent": 2,
+          "median": 8.0,
+          "spread": 0.0,
+          "by_tool": {
+            "rnaplfold": 8.0,
+            "rnaplfold-cli": 8.0,
+            "vienna-exact": 8.0,
+            "ensemble-sample": 8.0
+          },
+          "groups": {
+            "rnaplfold": "vienna-rnaplfold",
+            "rnaplfold-cli": "vienna-rnaplfold",
+            "vienna-exact": "vienna-global-pf",
+            "ensemble-sample": "vienna-global-pf"
+          },
+          "eligible_for_primary": [
+            "rnaplfold",
+            "rnaplfold-cli",
+            "vienna-exact",
+            "ensemble-sample"
+          ],
+          "primary_for_median": [
+            "rnaplfold",
+            "rnaplfold-cli",
+            "vienna-exact"
+          ],
+          "excluded_from_median": {
+            "ensemble-sample": "monte_carlo_probability"
+          },
+          "excluded_for_conditioning": {},
+          "excluded_for_protocol": {}
+        },
+        "seed_p_unpaired": {
+          "metric": "seed_p_unpaired",
+          "n_tools": 4,
+          "n_eligible": 4,
+          "n_primary": 3,
+          "n_independent": 2,
+          "median": 0.0073480152857921185,
+          "spread": 5.426250306887412e-07,
+          "by_tool": {
+            "rnaplfold": 0.007347743946553547,
+            "rnaplfold-cli": 0.007347744,
+            "vienna-exact": 0.0073482865983074625,
+            "ensemble-sample": 0.0083
+          },
+          "groups": {
+            "rnaplfold": "vienna-rnaplfold",
+            "rnaplfold-cli": "vienna-rnaplfold",
+            "vienna-exact": "vienna-global-pf",
+            "ensemble-sample": "vienna-global-pf"
+          },
+          "eligible_for_primary": [
+            "rnaplfold",
+            "rnaplfold-cli",
+            "vienna-exact",
+            "ensemble-sample"
+          ],
+          "primary_for_median": [
+            "rnaplfold",
+            "rnaplfold-cli",
+            "vienna-exact"
+          ],
+          "excluded_from_median": {
+            "ensemble-sample": "monte_carlo_probability"
+          },
+          "excluded_for_conditioning": {},
+          "excluded_for_protocol": {}
+        },
+        "seed_dg_open": {
+          "metric": "seed_dg_open",
+          "n_tools": 3,
+          "n_eligible": 3,
+          "n_primary": 3,
+          "n_independent": 2,
+          "median": 3.0282362579255975,
+          "spread": 4.5513898069948766e-05,
+          "by_tool": {
+            "rnaplfold": 3.028259017116186,
+            "rnaplfold-cli": 3.028259012633079,
+            "vienna-exact": 3.0282135009765625
+          },
+          "groups": {
+            "rnaplfold": "vienna-rnaplfold",
+            "rnaplfold-cli": "vienna-rnaplfold",
+            "vienna-exact": "vienna-global-pf"
+          },
+          "eligible_for_primary": [
+            "rnaplfold",
+            "rnaplfold-cli",
+            "vienna-exact"
+          ],
+          "primary_for_median": [
+            "rnaplfold",
+            "rnaplfold-cli",
+            "vienna-exact"
+          ],
+          "excluded_from_median": {},
+          "excluded_for_conditioning": {},
+          "excluded_for_protocol": {}
+        },
+        "paired_fraction": {
+          "metric": "paired_fraction",
+          "n_tools": 4,
+          "n_eligible": 2,
+          "n_primary": 2,
+          "n_independent": 2,
+          "median": 0.48318550641400065,
+          "spread": 0.022073744398205863,
+          "by_tool": {
+            "rnafold": 0.4942223786131036,
+            "rnastructure-partition": 0.4721486342148977,
+            "contrafold": 0.26359567375000004,
+            "eternafold": 0.35367892874999995
+          },
+          "groups": {
+            "rnafold": "vienna-global-pf",
+            "rnastructure-partition": "rnastructure",
+            "contrafold": "contrafold",
+            "eternafold": "eternafold"
+          },
+          "eligible_for_primary": [
+            "rnafold",
+            "rnastructure-partition"
+          ],
+          "primary_for_median": [
+            "rnafold",
+            "rnastructure-partition"
+          ],
+          "excluded_from_median": {},
+          "excluded_for_conditioning": {},
+          "excluded_for_protocol": {
+            "contrafold": {
+              "max_bp_span": "adapter does not declare support for this setting",
+              "window_size": "adapter does not declare support for this setting"
+            },
+            "eternafold": {
+              "max_bp_span": "adapter does not declare support for this setting",
+              "window_size": "adapter does not declare support for this setting"
+            }
+          }
+        },
+        "shannon_entropy": {
+          "metric": "shannon_entropy",
+          "n_tools": 1,
+          "n_eligible": 1,
+          "n_primary": 1,
+          "n_independent": 1,
+          "median": 1.2456957635149315,
+          "spread": 0.0,
+          "by_tool": {
+            "rnafold": 1.2456957635149315
+          },
+          "groups": {
+            "rnafold": "vienna-global-pf"
+          },
+          "eligible_for_primary": [
+            "rnafold"
+          ],
+          "primary_for_median": [
+            "rnafold"
+          ],
+          "excluded_from_median": {},
+          "excluded_for_conditioning": {},
+          "excluded_for_protocol": {}
+        }
+      },
+      "score": {
+        "heuristic_rank_score": 0.6541824340820312,
+        "score": 0.6541824340820312,
+        "coverage": 0.5,
+        "missing_metrics": [
+          "dg_open_spread",
+          "window_length_spread"
+        ],
+        "components": [
+          {
+            "metric": "dg_open_per_nt",
+            "label": "opening cost per nucleotide",
+            "weight": 1.5,
+            "value": 0.3785266876220703,
+            "desirability": 0.6541824340820312,
+            "present": true
+          },
+          {
+            "metric": "dg_open_spread",
+            "label": "robustness across model settings",
+            "weight": 0.75,
+            "value": null,
+            "desirability": null,
+            "present": false
+          },
+          {
+            "metric": "window_length_spread",
+            "label": "robustness across window length",
+            "weight": 0.75,
+            "value": null,
+            "desirability": null,
+            "present": false
+          }
+        ]
+      },
+      "heuristic_rank_score": 0.6541824340820312,
+      "notes": [
+        "seed accessibility is not used because the declared binder has no complementary nucleation mechanism; any raw seed readings are structural diagnostics, not affinity evidence"
+      ],
+      "detail": {
+        "seed_nucleation": {
+          "status": "not_applicable",
+          "raw_observations": "retained with each tool result but excluded from candidate metrics, screening, and the heuristic rank"
+        }
+      },
+      "primary_opening_observation_id": "vienna-exact:91-98:unconditioned",
+      "opening_observations": [
+        {
+          "observation_id": "rnaplfold:91-98:unconditioned",
+          "tool": "rnaplfold",
+          "interval": {
+            "start": 91,
+            "end": 98
+          },
+          "p_unpaired": 0.007347743946553548,
+          "dg_open_kcal_mol": 3.028259017116186,
+          "temperature_c": 37.0,
+          "event": "all_target_nucleotides_unpaired",
+          "model_family": "vienna-turner",
+          "algorithm": "RNAplfold-window-pf",
+          "sequence_scope": "local_window",
+          "conditioning_id": "unconditioned",
+          "estimate_kind": "point",
+          "p_lower_bound": null,
+          "p_upper_bound": null,
+          "seed": {
+            "start": 91,
+            "length": 8,
+            "p_unpaired": 0.007347743946553548,
+            "dg_open_kcal_mol": 3.028259017116186
+          },
+          "censor_reason": null
+        },
+        {
+          "observation_id": "rnaplfold-cli:91-98:unconditioned",
+          "tool": "rnaplfold-cli",
+          "interval": {
+            "start": 91,
+            "end": 98
+          },
+          "p_unpaired": 0.007347744,
+          "dg_open_kcal_mol": 3.028259012633079,
+          "temperature_c": 37.0,
+          "event": "all_target_nucleotides_unpaired",
+          "model_family": "vienna-turner",
+          "algorithm": "RNAplfold-window-pf",
+          "sequence_scope": "local_window",
+          "conditioning_id": "unconditioned",
+          "estimate_kind": "point",
+          "p_lower_bound": null,
+          "p_upper_bound": null,
+          "seed": {
+            "start": 91,
+            "length": 8,
+            "p_unpaired": 0.007347744,
+            "dg_open_kcal_mol": 3.028259012633079
+          },
+          "censor_reason": null
+        },
+        {
+          "observation_id": "vienna-exact:91-98:unconditioned",
+          "tool": "vienna-exact",
+          "interval": {
+            "start": 91,
+            "end": 98
+          },
+          "p_unpaired": 0.0073482865983074625,
+          "dg_open_kcal_mol": 3.0282135009765625,
+          "temperature_c": 37.0,
+          "event": "all_target_nucleotides_unpaired",
+          "model_family": "vienna-turner",
+          "algorithm": "constrained-partition-function",
+          "sequence_scope": "global_ensemble",
+          "conditioning_id": "unconditioned",
+          "estimate_kind": "point",
+          "p_lower_bound": null,
+          "p_upper_bound": null,
+          "seed": {
+            "start": 91,
+            "length": 8,
+            "p_unpaired": 0.0073482865983074625,
+            "dg_open_kcal_mol": 3.0282135009765625
+          },
+          "censor_reason": null
+        },
+        {
+          "observation_id": "ensemble-sample:91-98:unconditioned",
+          "tool": "ensemble-sample",
+          "interval": {
+            "start": 91,
+            "end": 98
+          },
+          "p_unpaired": 0.008300000000000004,
+          "dg_open_kcal_mol": 2.9531515259197563,
+          "temperature_c": 37.0,
+          "event": "all_target_nucleotides_unpaired",
+          "model_family": "vienna-turner",
+          "algorithm": "boltzmann-stochastic-backtracking",
+          "sequence_scope": "global_ensemble",
+          "conditioning_id": "unconditioned",
+          "estimate_kind": "point",
+          "p_lower_bound": null,
+          "p_upper_bound": null,
+          "seed": {
+            "start": 91,
+            "length": 8,
+            "p_unpaired": 0.0083,
+            "dg_open_kcal_mol": 2.9531515259197563
+          },
+          "censor_reason": null
+        }
+      ],
+      "biological_evidence": []
+    }
+  ],
+  "tool_results": [
+    {
+      "tool": "rnaplfold",
+      "tier": "accessibility",
+      "status": "ok",
+      "version": "ViennaRNA 2.7.2",
+      "runtime_s": 0.5472,
+      "independence_group": "vienna-rnaplfold",
+      "estimand": "probability",
+      "model_family": "vienna-turner",
+      "algorithm": "RNAplfold-window-pf",
+      "conditioning": {
+        "status": "not_requested",
+        "conditioning_id": "unconditioned"
+      },
+      "applied_protocol": {
+        "requested": {
+          "temperature_c": 37,
+          "param_set": "turner2004",
+          "dangles": 2,
+          "no_lonely_pairs": false,
+          "no_gu": false,
+          "no_gu_closure": false,
+          "gquad": false,
+          "circular": false,
+          "salt_molar": null,
+          "max_bp_span": 507,
+          "global_max_bp_span": null,
+          "window_size": 507,
+          "max_unpaired": 30
+        },
+        "applied": {
+          "temperature_c": 37,
+          "param_set": "turner2004",
+          "dangles": 2,
+          "no_lonely_pairs": false,
+          "no_gu": false,
+          "no_gu_closure": false,
+          "circular": false,
+          "salt_molar": null,
+          "max_bp_span": 507,
+          "window_size": 507,
+          "max_unpaired": 30
+        },
+        "unsupported": {},
+        "ignored_by_design": {
+          "gquad": "not material for this adapter's declared calculation",
+          "global_max_bp_span": "not material for this adapter's declared calculation"
+        },
+        "compatible_with_requested": true
+      },
+      "globals": {},
+      "regions": {
+        "91-98": {
+          "start": 91,
+          "end": 98,
+          "name": "PARS_low_8nt",
+          "values": {
+            "p_unpaired": 0.007347743946553547,
+            "dg_open": 3.028259017116186,
+            "dg_open_per_nt": 0.37853237713952326,
+            "mean_base_unpaired": 0.5057776213869054,
+            "min_base_unpaired": 0.06727971345678181,
+            "seed_start": 91.0,
+            "seed_length": 8.0,
+            "seed_p_unpaired": 0.007347743946553547,
+            "seed_dg_open": 3.028259017116186
+          },
+          "detail": {
+            "seed_trials": [
+              {
+                "start": 91,
+                "end": 98,
+                "p_unpaired": 0.007347743946553547,
+                "dg_open_kcal_mol": 3.028259017116186,
+                "estimate_kind": "point"
+              }
+            ],
+            "seed_selection_note": "best permitted placement selected from the listed trials"
+          }
+        },
+        "62-69": {
+          "start": 62,
+          "end": 69,
+          "name": "PARS_high_8nt",
+          "values": {
+            "p_unpaired": 0.013646397873250086,
+            "dg_open": 2.6466992020044176,
+            "dg_open_per_nt": 0.3308374002505522,
+            "mean_base_unpaired": 0.3849038230158731,
+            "min_base_unpaired": 0.020566660533324354,
+            "seed_start": 62.0,
+            "seed_length": 8.0,
+            "seed_p_unpaired": 0.013646397873250086,
+            "seed_dg_open": 2.6466992020044176
+          },
+          "detail": {
+            "seed_trials": [
+              {
+                "start": 62,
+                "end": 69,
+                "p_unpaired": 0.013646397873250086,
+                "dg_open_kcal_mol": 2.6466992020044176,
+                "estimate_kind": "point"
+              }
+            ],
+            "seed_selection_note": "best permitted placement selected from the listed trials"
+          }
+        }
+      },
+      "detail": {
+        "max_unpaired": 30
+      },
+      "warnings": [],
+      "error": "",
+      "settings": {
+        "temperature_c": 37,
+        "param_set": "turner2004",
+        "dangles": 2,
+        "no_lonely_pairs": false,
+        "no_gu": false,
+        "no_gu_closure": false,
+        "gquad": false,
+        "circular": false,
+        "salt_molar": null,
+        "max_bp_span": 507,
+        "global_max_bp_span": null,
+        "window_size": 507,
+        "max_unpaired": 30
+      }
+    },
+    {
+      "tool": "rnaplfold-cli",
+      "tier": "accessibility",
+      "status": "ok",
+      "version": "RNAplfold 2.4.7",
+      "runtime_s": 0.5543,
+      "independence_group": "vienna-rnaplfold",
+      "estimand": "probability",
+      "model_family": "vienna-turner",
+      "algorithm": "RNAplfold-window-pf",
+      "conditioning": {
+        "status": "not_requested",
+        "conditioning_id": "unconditioned"
+      },
+      "applied_protocol": {
+        "requested": {
+          "temperature_c": 37,
+          "param_set": "turner2004",
+          "dangles": 2,
+          "no_lonely_pairs": false,
+          "no_gu": false,
+          "no_gu_closure": false,
+          "gquad": false,
+          "circular": false,
+          "salt_molar": null,
+          "max_bp_span": 507,
+          "global_max_bp_span": null,
+          "window_size": 507,
+          "max_unpaired": 30
+        },
+        "applied": {
+          "temperature_c": 37,
+          "dangles": 2,
+          "no_lonely_pairs": false,
+          "no_gu": false,
+          "no_gu_closure": false,
+          "max_bp_span": 507,
+          "window_size": 507,
+          "max_unpaired": 8
+        },
+        "unsupported": {},
+        "ignored_by_design": {
+          "param_set": "not material for this adapter's declared calculation",
+          "gquad": "not material for this adapter's declared calculation",
+          "circular": "not material for this adapter's declared calculation",
+          "salt_molar": "not material for this adapter's declared calculation",
+          "global_max_bp_span": "not material for this adapter's declared calculation"
+        },
+        "compatible_with_requested": true
+      },
+      "globals": {},
+      "regions": {
+        "91-98": {
+          "start": 91,
+          "end": 98,
+          "name": "PARS_low_8nt",
+          "values": {
+            "p_unpaired": 0.007347744,
+            "dg_open": 3.028259012633079,
+            "dg_open_per_nt": 0.37853237657913485,
+            "seed_start": 91.0,
+            "seed_length": 8.0,
+            "seed_p_unpaired": 0.007347744,
+            "seed_dg_open": 3.028259012633079
+          },
+          "detail": {
+            "seed_trials": [
+              {
+                "start": 91,
+                "end": 98,
+                "p_unpaired": 0.007347744,
+                "dg_open_kcal_mol": 3.028259012633079,
+                "estimate_kind": "point"
+              }
+            ],
+            "seed_selection_note": "best permitted placement selected from the listed trials"
+          }
+        },
+        "62-69": {
+          "start": 62,
+          "end": 69,
+          "name": "PARS_high_8nt",
+          "values": {
+            "p_unpaired": 0.0136464,
+            "dg_open": 2.6466991059510447,
+            "dg_open_per_nt": 0.3308373882438806,
+            "seed_start": 62.0,
+            "seed_length": 8.0,
+            "seed_p_unpaired": 0.0136464,
+            "seed_dg_open": 2.6466991059510447
+          },
+          "detail": {
+            "seed_trials": [
+              {
+                "start": 62,
+                "end": 69,
+                "p_unpaired": 0.0136464,
+                "dg_open_kcal_mol": 2.6466991059510447,
+                "estimate_kind": "point"
+              }
+            ],
+            "seed_selection_note": "best permitted placement selected from the listed trials"
+          }
+        }
+      },
+      "detail": {
+        "max_unpaired": 8
+      },
+      "warnings": [],
+      "error": "",
+      "settings": {
+        "temperature_c": 37,
+        "param_set": "turner2004",
+        "dangles": 2,
+        "no_lonely_pairs": false,
+        "no_gu": false,
+        "no_gu_closure": false,
+        "gquad": false,
+        "circular": false,
+        "salt_molar": null,
+        "max_bp_span": 507,
+        "global_max_bp_span": null,
+        "window_size": 507,
+        "max_unpaired": 30
+      }
+    },
+    {
+      "tool": "vienna-exact",
+      "tier": "accessibility",
+      "status": "ok",
+      "version": "ViennaRNA 2.7.2",
+      "runtime_s": 1.4112,
+      "independence_group": "vienna-global-pf",
+      "estimand": "probability",
+      "model_family": "vienna-turner",
+      "algorithm": "constrained-partition-function",
+      "conditioning": {
+        "status": "not_requested",
+        "conditioning_id": "unconditioned"
+      },
+      "applied_protocol": {
+        "requested": {
+          "temperature_c": 37,
+          "param_set": "turner2004",
+          "dangles": 2,
+          "no_lonely_pairs": false,
+          "no_gu": false,
+          "no_gu_closure": false,
+          "gquad": false,
+          "circular": false,
+          "salt_molar": null,
+          "max_bp_span": 507,
+          "global_max_bp_span": null,
+          "window_size": 507,
+          "max_unpaired": 30
+        },
+        "applied": {
+          "temperature_c": 37,
+          "param_set": "turner2004",
+          "dangles": 2,
+          "no_lonely_pairs": false,
+          "no_gu": false,
+          "no_gu_closure": false,
+          "gquad": false,
+          "circular": false,
+          "salt_molar": null,
+          "global_max_bp_span": null
+        },
+        "unsupported": {},
+        "ignored_by_design": {
+          "max_bp_span": "not material for this adapter's declared calculation",
+          "window_size": "not material for this adapter's declared calculation",
+          "max_unpaired": "not material for this adapter's declared calculation"
+        },
+        "compatible_with_requested": true
+      },
+      "globals": {
+        "ensemble_free_energy": -111.4599838256836
+      },
+      "regions": {
+        "91-98": {
+          "start": 91,
+          "end": 98,
+          "name": "PARS_low_8nt",
+          "values": {
+            "dg_open": 3.0282135009765625,
+            "dg_open_per_nt": 0.3785266876220703,
+            "p_unpaired": 0.0073482865983074625,
+            "seed_start": 91.0,
+            "seed_length": 8.0,
+            "seed_dg_open": 3.0282135009765625,
+            "seed_p_unpaired": 0.0073482865983074625
+          },
+          "detail": {
+            "seed_trials": [
+              {
+                "start": 91,
+                "end": 98,
+                "p_unpaired": 0.0073482865983074625,
+                "dg_open_kcal_mol": 3.0282135009765625,
+                "estimate_kind": "point"
+              }
+            ],
+            "seed_selection_note": "lowest-opening-energy permitted placement selected from the evaluated trials"
+          }
+        },
+        "62-69": {
+          "start": 62,
+          "end": 69,
+          "name": "PARS_high_8nt",
+          "values": {
+            "dg_open": 2.6466598510742188,
+            "dg_open_per_nt": 0.33083248138427734,
+            "p_unpaired": 0.01364726918312587,
+            "seed_start": 62.0,
+            "seed_length": 8.0,
+            "seed_dg_open": 2.6466598510742188,
+            "seed_p_unpaired": 0.01364726918312587
+          },
+          "detail": {
+            "seed_trials": [
+              {
+                "start": 62,
+                "end": 69,
+                "p_unpaired": 0.01364726918312587,
+                "dg_open_kcal_mol": 2.6466598510742188,
+                "estimate_kind": "point"
+              }
+            ],
+            "seed_selection_note": "lowest-opening-energy permitted placement selected from the evaluated trials"
+          }
+        }
+      },
+      "detail": {
+        "reference_free_energy": -111.4599838256836,
+        "seed_scans": {
+          "PARS_low_8nt": {
+            "placements": 1,
+            "tested_starts": [
+              91
+            ],
+            "omitted_starts": [],
+            "trials": [
+              {
+                "start": 91,
+                "end": 98,
+                "p_unpaired": 0.0073482865983074625,
+                "dg_open_kcal_mol": 3.0282135009765625,
+                "estimate_kind": "point"
+              }
+            ]
+          },
+          "PARS_high_8nt": {
+            "placements": 1,
+            "tested_starts": [
+              62
+            ],
+            "omitted_starts": [],
+            "trials": [
+              {
+                "start": 62,
+                "end": 69,
+                "p_unpaired": 0.01364726918312587,
+                "dg_open_kcal_mol": 2.6466598510742188,
+                "estimate_kind": "point"
+              }
+            ]
+          }
+        }
+      },
+      "warnings": [],
+      "error": "",
+      "settings": {
+        "temperature_c": 37,
+        "param_set": "turner2004",
+        "dangles": 2,
+        "no_lonely_pairs": false,
+        "no_gu": false,
+        "no_gu_closure": false,
+        "gquad": false,
+        "circular": false,
+        "salt_molar": null,
+        "max_bp_span": 507,
+        "global_max_bp_span": null,
+        "window_size": 507,
+        "max_unpaired": 30
+      }
+    },
+    {
+      "tool": "rnafold",
+      "tier": "structure",
+      "status": "ok",
+      "version": "ViennaRNA 2.7.2",
+      "runtime_s": 0.4037,
+      "independence_group": "vienna-global-pf",
+      "estimand": "probability",
+      "model_family": "vienna-turner",
+      "algorithm": "global-partition-function",
+      "conditioning": {
+        "status": "not_requested",
+        "conditioning_id": "unconditioned"
+      },
+      "applied_protocol": {
+        "requested": {
+          "temperature_c": 37,
+          "param_set": "turner2004",
+          "dangles": 2,
+          "no_lonely_pairs": false,
+          "no_gu": false,
+          "no_gu_closure": false,
+          "gquad": false,
+          "circular": false,
+          "salt_molar": null,
+          "max_bp_span": 507,
+          "global_max_bp_span": null,
+          "window_size": 507,
+          "max_unpaired": 30
+        },
+        "applied": {
+          "temperature_c": 37,
+          "param_set": "turner2004",
+          "dangles": 2,
+          "no_lonely_pairs": false,
+          "no_gu": false,
+          "no_gu_closure": false,
+          "gquad": false,
+          "circular": false,
+          "salt_molar": null,
+          "global_max_bp_span": null
+        },
+        "unsupported": {},
+        "ignored_by_design": {
+          "max_bp_span": "not material for this adapter's declared calculation",
+          "window_size": "not material for this adapter's declared calculation",
+          "max_unpaired": "not material for this adapter's declared calculation"
+        },
+        "compatible_with_requested": true
+      },
+      "globals": {
+        "mfe": -104.0,
+        "ensemble_free_energy": -111.4599838256836,
+        "mfe_ensemble_gap": 7.459983825683594,
+        "mean_bp_distance": 85.22988029447266
+      },
+      "regions": {
+        "91-98": {
+          "start": 91,
+          "end": 98,
+          "name": "PARS_low_8nt",
+          "values": {
+            "mean_base_unpaired": 0.5057776213868964,
+            "min_base_unpaired": 0.06727971345677497,
+            "paired_fraction": 0.4942223786131036,
+            "shannon_entropy": 1.2456957635149315
+          },
+          "detail": {
+            "mfe_substructure": "((....))"
+          }
+        },
+        "62-69": {
+          "start": 62,
+          "end": 69,
+          "name": "PARS_high_8nt",
+          "values": {
+            "mean_base_unpaired": 0.38490382301586584,
+            "min_base_unpaired": 0.020566660533318237,
+            "paired_fraction": 0.6150961769841341,
+            "shannon_entropy": 0.4000452819375186
+          },
+          "detail": {
+            "mfe_substructure": "..(((((."
+          }
+        }
+      },
+      "detail": {
+        "mfe_structure": "(((((((............................((((.((((((.(((...((((..((..(((((....((.((....)).)).((.((....)).)).((....(..((((..(((...(.(((...(((((..((.....(((((....((((.....)))).))))).))..)))))....))).).....)))..))))..)....))...(((((.......))))).......(((((.((((....))))...))))).....)))))..)).)))).(((..((((..((..(((.((((.......)))).)))..)).)))).)))......((.((.(((.((.((...(.((((.....((((((((..(((.....)))..)))))).))..)))))...)).)).))).)).))))).)))))).)))).....(((((((....(((((.......))))).....)))))))))))))).........",
+        "pairing_propensity_structure": "(((((({..........,{,...............((((.((((((.(((...,(((..((..(((((....((.((....}}.||.{{.((....)).)).||....(..((((..(((...(.(((...(((((..{{.....(((((....((((.....)))).))))).))..)))))....))).).....)))..))))..}....}}...(((({.....}.))))).,,....(((((.((((....))))...))))).....)))))..)}.)))}.(((..((((..((..(((.((((.......)))).)))..)).)))}.}}}......((.((.(((.((.((...(.((((.....{{((((({..(((.....)))..,))))).}}..)))))...)).)).))).)).))))).)))))).)))).....(((((((....(((((.......))))).....)))))))})))))).........",
+        "centroid_structure": "(((((((............................((((.((((((.(((....(((..((..(((((....((.((....)).))....((....)).............((((..(((...(.(((...(((((.........(((((....((((.....)))).))))).....)))))....))).).....)))..))))............(((((.......))))).......(((((.((((....))))...))))).....)))))..)).)))..(((..((((..((..(((.((((.......)))).)))..)).)))).)))......((.((.(((.((.((...(.((((.....(((((((...(((.....)))...))))).))..)))))...)).)).))).)).))))).)))))).)))).....(((((((....(((((.......))))).....)))))))))))))).........",
+        "centroid_distance": 53.28925065846364,
+        "mea_structure": "(((((((............................((((.((((((.(((...((((..((..(((((....((.((....)).)).((.((....)).)).((....(..((((..(((...(.(((...(((((..((.....(((((....((((.....)))).))))).))..)))))....))).).....)))..))))..)....))...(((((.......))))).......(((((.((((....))))...))))).....)))))..)).)))).(((..((((..((..(((.((((.......)))).)))..)).)))).)))......((.((.(((.((.((...(.((((.....((((((((..(((.....)))..)))))).))..)))))...)).)).))).)).))))).)))))).)))).....(((((((....(((((.......))))).....))))))))))))))........."
+      },
+      "warnings": [
+        "MFE and ensemble free energy differ by more than 0.5 kcal/mol (MFE-state probability 0.000): substantial ensemble weight lies outside the MFE state"
+      ],
+      "error": "",
+      "settings": {
+        "temperature_c": 37,
+        "param_set": "turner2004",
+        "dangles": 2,
+        "no_lonely_pairs": false,
+        "no_gu": false,
+        "no_gu_closure": false,
+        "gquad": false,
+        "circular": false,
+        "salt_molar": null,
+        "max_bp_span": 507,
+        "global_max_bp_span": null,
+        "window_size": 507,
+        "max_unpaired": 30
+      }
+    },
+    {
+      "tool": "ensemble-sample",
+      "tier": "structure",
+      "status": "ok",
+      "version": "ViennaRNA 2.7.2",
+      "runtime_s": 0.7134,
+      "independence_group": "vienna-global-pf",
+      "estimand": "monte_carlo_probability",
+      "model_family": "vienna-turner",
+      "algorithm": "boltzmann-stochastic-backtracking",
+      "conditioning": {
+        "status": "not_requested",
+        "conditioning_id": "unconditioned"
+      },
+      "applied_protocol": {
+        "requested": {
+          "temperature_c": 37,
+          "param_set": "turner2004",
+          "dangles": 2,
+          "no_lonely_pairs": false,
+          "no_gu": false,
+          "no_gu_closure": false,
+          "gquad": false,
+          "circular": false,
+          "salt_molar": null,
+          "max_bp_span": 507,
+          "global_max_bp_span": null,
+          "window_size": 507,
+          "max_unpaired": 30
+        },
+        "applied": {
+          "temperature_c": 37,
+          "param_set": "turner2004",
+          "dangles": 2,
+          "no_lonely_pairs": false,
+          "no_gu": false,
+          "no_gu_closure": false,
+          "gquad": false,
+          "circular": false,
+          "salt_molar": null,
+          "global_max_bp_span": null
+        },
+        "unsupported": {},
+        "ignored_by_design": {
+          "max_bp_span": "not material for this adapter's declared calculation",
+          "window_size": "not material for this adapter's declared calculation",
+          "max_unpaired": "not material for this adapter's declared calculation"
+        },
+        "compatible_with_requested": true
+      },
+      "globals": {
+        "samples": 10000.0
+      },
+      "regions": {
+        "91-98": {
+          "start": 91,
+          "end": 98,
+          "name": "PARS_low_8nt",
+          "values": {
+            "mean_base_unpaired": 0.507625,
+            "p_unpaired": 0.0083,
+            "dg_open": 2.9531515259197563,
+            "dg_open_per_nt": 0.36914394073996953,
+            "seed_start": 91.0,
+            "seed_length": 8.0,
+            "seed_p_unpaired": 0.0083
+          },
+          "detail": {
+            "state_populations": {
+              "exposed": 0.0083,
+              "partly_exposed": 0.8077,
+              "buried": 0.184
+            },
+            "p_unpaired_stderr": 0.000907254650029417,
+            "p_unpaired_interval_95": [
+              0.006700968940935741,
+              0.010276655056787622
+            ],
+            "sampling_limited": false,
+            "seed_trials": [
+              {
+                "start": 91,
+                "end": 98,
+                "hits": 83,
+                "draws": 10000,
+                "interval_95": [
+                  0.006700968940935741,
+                  0.010276655056787622
+                ],
+                "p_unpaired": 0.0083,
+                "estimate_kind": "point"
+              }
+            ],
+            "seed_selection_note": "best empirical placement selected from the listed trials; intervals are per placement and do not correct selection bias"
+          }
+        },
+        "62-69": {
+          "start": 62,
+          "end": 69,
+          "name": "PARS_high_8nt",
+          "values": {
+            "mean_base_unpaired": 0.386625,
+            "p_unpaired": 0.0154,
+            "dg_open": 2.572189724827998,
+            "dg_open_per_nt": 0.32152371560349974,
+            "seed_start": 62.0,
+            "seed_length": 8.0,
+            "seed_p_unpaired": 0.0154
+          },
+          "detail": {
+            "state_populations": {
+              "exposed": 0.0154,
+              "partly_exposed": 0.0528,
+              "buried": 0.9318
+            },
+            "p_unpaired_stderr": 0.001231374841386651,
+            "p_unpaired_interval_95": [
+              0.013165934022359623,
+              0.01800623719850013
+            ],
+            "sampling_limited": false,
+            "seed_trials": [
+              {
+                "start": 62,
+                "end": 69,
+                "hits": 154,
+                "draws": 10000,
+                "interval_95": [
+                  0.013165934022359623,
+                  0.01800623719850013
+                ],
+                "p_unpaired": 0.0154,
+                "estimate_kind": "point"
+              }
+            ],
+            "seed_selection_note": "best empirical placement selected from the listed trials; intervals are per placement and do not correct selection bias"
+          }
+        }
+      },
+      "detail": {
+        "sampling_seed": 1729,
+        "requested_samples": 10000
+      },
+      "warnings": [],
+      "error": "",
+      "settings": {
+        "temperature_c": 37,
+        "param_set": "turner2004",
+        "dangles": 2,
+        "no_lonely_pairs": false,
+        "no_gu": false,
+        "no_gu_closure": false,
+        "gquad": false,
+        "circular": false,
+        "salt_molar": null,
+        "max_bp_span": 507,
+        "global_max_bp_span": null,
+        "window_size": 507,
+        "max_unpaired": 30
+      }
+    },
+    {
+      "tool": "rnastructure-partition",
+      "tier": "structure",
+      "status": "ok",
+      "version": "partition: Version 6.6 (April 2, 2026).",
+      "runtime_s": 5.969,
+      "independence_group": "rnastructure",
+      "estimand": "probability",
+      "model_family": "rnastructure",
+      "algorithm": "partition-probability-plot",
+      "conditioning": {
+        "status": "not_requested",
+        "conditioning_id": "unconditioned"
+      },
+      "applied_protocol": {
+        "requested": {
+          "temperature_c": 37,
+          "param_set": "turner2004",
+          "dangles": 2,
+          "no_lonely_pairs": false,
+          "no_gu": false,
+          "no_gu_closure": false,
+          "gquad": false,
+          "circular": false,
+          "salt_molar": null,
+          "max_bp_span": 507,
+          "global_max_bp_span": null,
+          "window_size": 507,
+          "max_unpaired": 30
+        },
+        "applied": {
+          "temperature_c": 37,
+          "global_max_bp_span": null
+        },
+        "unsupported": {},
+        "ignored_by_design": {
+          "param_set": "not material for this adapter's declared calculation",
+          "dangles": "not material for this adapter's declared calculation",
+          "no_lonely_pairs": "not material for this adapter's declared calculation",
+          "no_gu": "not material for this adapter's declared calculation",
+          "no_gu_closure": "not material for this adapter's declared calculation",
+          "gquad": "not material for this adapter's declared calculation",
+          "circular": "not material for this adapter's declared calculation",
+          "salt_molar": "not material for this adapter's declared calculation",
+          "max_bp_span": "not material for this adapter's declared calculation",
+          "window_size": "not material for this adapter's declared calculation",
+          "max_unpaired": "not material for this adapter's declared calculation"
+        },
+        "compatible_with_requested": true
+      },
+      "globals": {},
+      "regions": {
+        "91-98": {
+          "start": 91,
+          "end": 98,
+          "name": "PARS_low_8nt",
+          "values": {
+            "mean_base_unpaired": 0.5278513657851023,
+            "min_base_unpaired": 0.10255135505048141,
+            "paired_fraction": 0.4721486342148977
+          },
+          "detail": {}
+        },
+        "62-69": {
+          "start": 62,
+          "end": 69,
+          "name": "PARS_high_8nt",
+          "values": {
+            "mean_base_unpaired": 0.45871646218466605,
+            "min_base_unpaired": 0.05073512877845143,
+            "paired_fraction": 0.541283537815334
+          },
+          "detail": {}
+        }
+      },
+      "detail": {},
+      "warnings": [],
+      "error": "",
+      "settings": {
+        "temperature_c": 37,
+        "param_set": "turner2004",
+        "dangles": 2,
+        "no_lonely_pairs": false,
+        "no_gu": false,
+        "no_gu_closure": false,
+        "gquad": false,
+        "circular": false,
+        "salt_molar": null,
+        "max_bp_span": 507,
+        "global_max_bp_span": null,
+        "window_size": 507,
+        "max_unpaired": 30
+      }
+    },
+    {
+      "tool": "contrafold",
+      "tier": "structure",
+      "status": "ok",
+      "version": "CONTRAfold",
+      "runtime_s": 0.5997,
+      "independence_group": "contrafold",
+      "estimand": "posterior",
+      "model_family": "contrafold",
+      "algorithm": "contrafold",
+      "conditioning": {
+        "status": "not_requested",
+        "conditioning_id": "unconditioned"
+      },
+      "applied_protocol": {
+        "requested": {
+          "temperature_c": 37,
+          "param_set": "turner2004",
+          "dangles": 2,
+          "no_lonely_pairs": false,
+          "no_gu": false,
+          "no_gu_closure": false,
+          "gquad": false,
+          "circular": false,
+          "salt_molar": null,
+          "max_bp_span": 507,
+          "global_max_bp_span": null,
+          "window_size": 507,
+          "max_unpaired": 30
+        },
+        "applied": {},
+        "unsupported": {
+          "max_bp_span": "adapter does not declare support for this setting",
+          "window_size": "adapter does not declare support for this setting"
+        },
+        "ignored_by_design": {
+          "temperature_c": "not material for this adapter's declared calculation",
+          "param_set": "not material for this adapter's declared calculation",
+          "dangles": "not material for this adapter's declared calculation",
+          "no_lonely_pairs": "not material for this adapter's declared calculation",
+          "no_gu": "not material for this adapter's declared calculation",
+          "no_gu_closure": "not material for this adapter's declared calculation",
+          "gquad": "not material for this adapter's declared calculation",
+          "circular": "not material for this adapter's declared calculation",
+          "salt_molar": "not material for this adapter's declared calculation",
+          "global_max_bp_span": "not material for this adapter's declared calculation",
+          "max_unpaired": "not material for this adapter's declared calculation"
+        },
+        "compatible_with_requested": false
+      },
+      "globals": {},
+      "regions": {
+        "91-98": {
+          "start": 91,
+          "end": 98,
+          "name": "PARS_low_8nt",
+          "values": {
+            "mean_base_unpaired": 0.73640432625,
+            "min_base_unpaired": 0.51654774,
+            "paired_fraction": 0.26359567375000004
+          },
+          "detail": {}
+        },
+        "62-69": {
+          "start": 62,
+          "end": 69,
+          "name": "PARS_high_8nt",
+          "values": {
+            "mean_base_unpaired": 0.8616146175,
+            "min_base_unpaired": 0.67048942,
+            "paired_fraction": 0.1383853825
+          },
+          "detail": {}
+        }
+      },
+      "detail": {
+        "note": "posteriors are model confidences, not Boltzmann probabilities; no opening free energy is derived from them"
+      },
+      "warnings": [],
+      "error": "",
+      "settings": {
+        "temperature_c": 37,
+        "param_set": "turner2004",
+        "dangles": 2,
+        "no_lonely_pairs": false,
+        "no_gu": false,
+        "no_gu_closure": false,
+        "gquad": false,
+        "circular": false,
+        "salt_molar": null,
+        "max_bp_span": 507,
+        "global_max_bp_span": null,
+        "window_size": 507,
+        "max_unpaired": 30
+      }
+    },
+    {
+      "tool": "eternafold",
+      "tier": "structure",
+      "status": "ok",
+      "version": "EternaFoldParams.v1 on CONTRAfold 2.02",
+      "runtime_s": 0.5799,
+      "independence_group": "eternafold",
+      "estimand": "posterior",
+      "model_family": "eternafold",
+      "algorithm": "eternafold",
+      "conditioning": {
+        "status": "not_requested",
+        "conditioning_id": "unconditioned"
+      },
+      "applied_protocol": {
+        "requested": {
+          "temperature_c": 37,
+          "param_set": "turner2004",
+          "dangles": 2,
+          "no_lonely_pairs": false,
+          "no_gu": false,
+          "no_gu_closure": false,
+          "gquad": false,
+          "circular": false,
+          "salt_molar": null,
+          "max_bp_span": 507,
+          "global_max_bp_span": null,
+          "window_size": 507,
+          "max_unpaired": 30
+        },
+        "applied": {},
+        "unsupported": {
+          "max_bp_span": "adapter does not declare support for this setting",
+          "window_size": "adapter does not declare support for this setting"
+        },
+        "ignored_by_design": {
+          "temperature_c": "not material for this adapter's declared calculation",
+          "param_set": "not material for this adapter's declared calculation",
+          "dangles": "not material for this adapter's declared calculation",
+          "no_lonely_pairs": "not material for this adapter's declared calculation",
+          "no_gu": "not material for this adapter's declared calculation",
+          "no_gu_closure": "not material for this adapter's declared calculation",
+          "gquad": "not material for this adapter's declared calculation",
+          "circular": "not material for this adapter's declared calculation",
+          "salt_molar": "not material for this adapter's declared calculation",
+          "global_max_bp_span": "not material for this adapter's declared calculation",
+          "max_unpaired": "not material for this adapter's declared calculation"
+        },
+        "compatible_with_requested": false
+      },
+      "globals": {},
+      "regions": {
+        "91-98": {
+          "start": 91,
+          "end": 98,
+          "name": "PARS_low_8nt",
+          "values": {
+            "mean_base_unpaired": 0.64632107125,
+            "min_base_unpaired": 0.37818838,
+            "paired_fraction": 0.35367892874999995
+          },
+          "detail": {}
+        },
+        "62-69": {
+          "start": 62,
+          "end": 69,
+          "name": "PARS_high_8nt",
+          "values": {
+            "mean_base_unpaired": 0.758026925,
+            "min_base_unpaired": 0.33716668000000005,
+            "paired_fraction": 0.24197307499999998
+          },
+          "detail": {}
+        }
+      },
+      "detail": {
+        "note": "posteriors are model confidences, not Boltzmann probabilities; no opening free energy is derived from them",
+        "params": "EternaFoldParams.v1"
+      },
+      "warnings": [],
+      "error": "",
+      "settings": {
+        "temperature_c": 37,
+        "param_set": "turner2004",
+        "dangles": 2,
+        "no_lonely_pairs": false,
+        "no_gu": false,
+        "no_gu_closure": false,
+        "gquad": false,
+        "circular": false,
+        "salt_molar": null,
+        "max_bp_span": 507,
+        "global_max_bp_span": null,
+        "window_size": 507,
+        "max_unpaired": 30
+      }
+    }
+  ],
+  "warnings": [
+    "binder class 'structural_probe' does not declare a complementary nucleation mechanism; seed metrics are excluded from screening and ranking, and the remaining structural-opening rank is not a binding-affinity prediction"
+  ],
+  "detail": {
+    "recognition_scoring": {
+      "seed_nucleation_status": "not_applicable",
+      "seed_metrics": "diagnostic_only",
+      "shortlist_order": "opening_cost_only",
+      "active_criteria": [
+        "dg_open_per_nt",
+        "dg_open_spread",
+        "window_length_spread"
+      ],
+      "excluded_criteria": [
+        "seed_p_unpaired"
+      ]
+    },
+    "unsupported_assumptions": {
+      "seed_nucleation_ranking": {
+        "binder_class": "structural_probe",
+        "reason": "no complementary base-pair nucleation mechanism was declared"
+      }
+    },
+    "ranking_semantics": "heuristic_rank_score is an uncalibrated structural ranking aid, not a probability of binding, cleavage, or cellular function",
+    "sequence_sha256": "c02f81f433bd04c3b6fee68b6a160878dd8e6964263b2ed0d874f2458654cad0"
+  }
+}

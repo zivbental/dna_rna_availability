@@ -8,6 +8,12 @@ shared metric vocabulary ([3.3](03-architecture.md#33-the-metric-vocabulary)).
 `rnavail tools` prints what is installed here, what is missing, and how to
 get it.
 
+**How to read this page.** A tool, engine, or library is the scientific
+software doing a calculation. An adapter is the `rnavail` connector that
+supplies inputs, reads outputs, records capabilities, and translates the result
+into shared fields. The table is not a ballot: some engines calculate joint
+accessibility; others deliberately provide warnings or different evidence.
+
 ---
 
 ## 4.1 Why twelve and not one
@@ -51,6 +57,27 @@ of structure.
 runtime class, filterable with `--max-cost`. *Estimand* and *independence
 group* control how the consensus combines them
 ([5.1](05-consensus-and-scoring.md#51-four-gates-before-any-averaging)).
+
+### Plain-language role and advantage of every adapter
+
+| Adapter | What it does | Main advantage | How its result is used |
+|---|---|---|---|
+| `rnaplfold` | asks whether short intervals are open inside moving local neighborhoods | scores an entire transcript in one pass | screening, seeds, profile and length landscape |
+| `rnaplfold-cli` | runs the same method through the official executable | detects integration/parsing errors | parity check; grouped with `rnaplfold`, never a second vote |
+| `vienna-exact` | compares the whole-RNA ensemble with and without an interval forced open | direct joint-event energy under the global ViennaRNA model | preferred coherent headline observation when compatible |
+| `gquad-scan` | searches the sequence for G-rich quadruplex propensity | sees a non-standard motif ordinary pair matrices omit | warning only; not a corrected probability |
+| `rnafold` | computes whole-RNA MFE and ensemble descriptors | gives global structural context and uncertainty | per-base/global diagnostics in the shared Vienna family |
+| `ensemble-sample` | draws structures from the global Boltzmann ensemble | reveals exposed/partial/buried populations | numerical and state check; bounds rare events honestly |
+| `rnastructure-partition` | computes probabilities with a separate implementation and parameters | strongest independent thermodynamic cross-check | compatible per-base consensus and disagreement detection |
+| `contrafold` | predicts pairing with a learned statistical model | tests a different model class | posterior diagnostic, never converted into physical `ΔG` |
+| `eternafold` | runs the CONTRAfold model class with measurement-trained parameters | tests training informed by large chemical-mapping data | separate learned posterior diagnostic |
+| `linearfold` | predicts one whole-transcript structure with a linear-time beam search | fast long-range burial check | single-structure warning, not an ensemble probability |
+| `probknot` | predicts one structure while allowing crossing pairs | detects pseudoknots missed by nested models | warning that other accessibility estimates may be optimistic |
+| `kinwalker` | follows one folding path as the RNA chain grows | detects possible co-transcriptional traps | short-construct kinetic warning; refuses long inputs |
+
+“Used in the report” does not always mean “used in the rank.” The score uses
+four defined structural criteria; specialist tools often change the warning
+you act on rather than the arithmetic. See [5.4](05-consensus-and-scoring.md#54-what-is-scored-and-what-is-only-reported).
 
 ---
 
@@ -199,7 +226,7 @@ sampling row does not change that primary value. If sampling is the sole
 compatible estimate, a zero-hit bound can still leave candidates with
 different primary evidence coverage; `_diagnose_run()` flags that general
 dropout case
-([2.11](02-pipeline.md#211-step-11--diagnose-the-run-as-a-whole)).
+([2.11](02-pipeline.md#211-step-11-diagnose-the-run-as-a-whole)).
 
 **Reproducible by default** (fixed RNG seed); `--sampling-seed` draws a fresh
 Monte Carlo ensemble from the same model.

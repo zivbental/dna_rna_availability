@@ -1,0 +1,225 @@
+==============================================================================
+rnavail evaluate: closed_hairpin  (48 nt, RNA, GC 83.3%)
+protocol: T37/turner2004/d2/L48/W48/GLall
+recognition: structural_probe; seed any / 8 nt; endpoint structural_opening
+condition: validation_model_37C; 37 °C; preparation unspecified
+==============================================================================
+
+tools that ran (8): rnaplfold, rnaplfold-cli, vienna-exact, rnafold, ensemble-sample, rnastructure-partition, contrafold, eternafold
+resolved tool protocols:
+   rnaplfold: conditioning=not_requested; applied=circular, dangles, max_bp_span, max_unpaired, no_gu, no_gu_closure, no_lonely_pairs, param_set, salt_molar, temperature_c, window_size; unsupported=-
+   rnaplfold-cli: conditioning=not_requested; applied=dangles, max_bp_span, max_unpaired, no_gu, no_gu_closure, no_lonely_pairs, temperature_c, window_size; unsupported=-
+   vienna-exact: conditioning=not_requested; applied=circular, dangles, global_max_bp_span, gquad, no_gu, no_gu_closure, no_lonely_pairs, param_set, salt_molar, temperature_c; unsupported=-
+   rnafold: conditioning=not_requested; applied=circular, dangles, global_max_bp_span, gquad, no_gu, no_gu_closure, no_lonely_pairs, param_set, salt_molar, temperature_c; unsupported=-
+   ensemble-sample: conditioning=not_requested; applied=circular, dangles, global_max_bp_span, gquad, no_gu, no_gu_closure, no_lonely_pairs, param_set, salt_molar, temperature_c; unsupported=-
+   rnastructure-partition: conditioning=not_requested; applied=global_max_bp_span, temperature_c; unsupported=-
+   contrafold: conditioning=not_requested; applied=-; unsupported=max_bp_span, window_size
+   eternafold: conditioning=not_requested; applied=-; unsupported=max_bp_span, window_size
+
+------------------------------------------------------------------------------
+ranked candidates (top 3 of 3)
+------------------------------------------------------------------------------
+      region      len     rank    seedP    P_unp   dGopen    dG/nt
+    loop_8nt        8    1.000        -    1.000     0.00     0.00
+    stem_8nt        8    0.000        - 2.52e-19    26.39     3.30
+   stem_20nt       20    0.000        - 3.58e-25    34.69     1.73
+
+------------------------------------------------------------------------------
+loop_8nt  AAAAAAAA
+   heuristic rank score 1.0000 (coverage 50% of scoring weight)
+   primary opening: vienna-exact / global_ensemble; P=1.000, dG=0.00; unconditioned
+   - seed accessibility is not used because the declared binder has no
+     complementary nucleation mechanism; any raw seed readings are structural
+     diagnostics, not affinity evidence
+   score components:
+      opening cost per nucleotide            value=0          desirability=1.000 weight=1.5
+      not scored (no data): dg_open_spread, window_length_spread
+   cross-tool agreement:
+      dg_open: median 0 kcal/mol across 2 compatible calculation groups from 3
+         primary values; 4 raw tools reported (spread 0) [ensemble-sample=-0,
+         rnaplfold=-0, rnaplfold-cli=-0, vienna-exact=0]
+         not blended into the median (different estimand): ensemble-sample
+         (monte_carlo_probability)
+      dg_open_per_nt: median 0 kcal/mol/nt across 2 compatible calculation
+         groups from 3 primary values; 4 raw tools reported (spread 0)
+         [ensemble-sample=-0, rnaplfold=-0, rnaplfold-cli=-0, vienna-exact=0]
+         not blended into the median (different estimand): ensemble-sample
+         (monte_carlo_probability)
+      mean_base_unpaired: median 1 across 3 compatible calculation groups from
+         3 primary values; 6 raw tools reported (spread 1.776e-15)
+         [contrafold=1, ensemble-sample=1, eternafold=1, rnafold=1,
+         rnaplfold=1, rnastructure-partition=1]
+         not blended into the median (different estimand): ensemble-sample
+         (monte_carlo_probability)
+         raw only (material unsupported settings): contrafold (max_bp_span,
+         window_size), eternafold (max_bp_span, window_size)
+      min_base_unpaired: median 1 across 3 compatible calculation groups from
+         3 primary values; 5 raw tools reported (spread 1.776e-15)
+         [contrafold=1, eternafold=1, rnafold=1, rnaplfold=1,
+         rnastructure-partition=1]
+         raw only (material unsupported settings): contrafold (max_bp_span,
+         window_size), eternafold (max_bp_span, window_size)
+      p_unpaired: median 1 across 2 compatible calculation groups from 3
+         primary values; 4 raw tools reported (spread 0) [ensemble-sample=1,
+         rnaplfold=1, rnaplfold-cli=1, vienna-exact=1]
+         not blended into the median (different estimand): ensemble-sample
+         (monte_carlo_probability)
+      paired_fraction: median 0 across 2 compatible calculation groups from 2
+         primary values; 4 raw tools reported (spread 0) [contrafold=0,
+         eternafold=0, rnafold=0, rnastructure-partition=0]
+         raw only (material unsupported settings): contrafold (max_bp_span,
+         window_size), eternafold (max_bp_span, window_size)
+      seed_dg_open: median 0 kcal/mol across 2 compatible calculation groups
+         from 3 primary values; 3 raw tools reported (spread 0) [rnaplfold=-0,
+         rnaplfold-cli=-0, vienna-exact=0]
+      seed_length: median 8 across 2 compatible calculation groups from 3
+         primary values; 4 raw tools reported (spread 0) [ensemble-sample=8,
+         rnaplfold=8, rnaplfold-cli=8, vienna-exact=8]
+         not blended into the median (different estimand): ensemble-sample
+         (monte_carlo_probability)
+      seed_p_unpaired: median 1 across 2 compatible calculation groups from 3
+         primary values; 4 raw tools reported (spread 0) [ensemble-sample=1,
+         rnaplfold=1, rnaplfold-cli=1, vienna-exact=1]
+         not blended into the median (different estimand): ensemble-sample
+         (monte_carlo_probability)
+      seed_start: median 21 across 2 compatible calculation groups from 3
+         primary values; 4 raw tools reported (spread 0) [ensemble-sample=21,
+         rnaplfold=21, rnaplfold-cli=21, vienna-exact=21]
+         not blended into the median (different estimand): ensemble-sample
+         (monte_carlo_probability)
+
+------------------------------------------------------------------------------
+stem_8nt  GCGCGCGC
+   heuristic rank score 0.0000 (coverage 50% of scoring weight)
+   primary opening: vienna-exact / global_ensemble; P=2.52e-19, dG=26.39; unconditioned
+   - seed accessibility is not used because the declared binder has no
+     complementary nucleation mechanism; any raw seed readings are structural
+     diagnostics, not affinity evidence
+   score components:
+      opening cost per nucleotide            value=3.299      desirability=0.000 weight=1.5
+      not scored (no data): dg_open_spread, window_length_spread
+   cross-tool agreement:
+      dg_open: median 26.39 kcal/mol across 2 compatible calculation groups
+         from 3 primary values; 3 raw tools reported (spread 0.0004536)
+         [rnaplfold=26.39, rnaplfold-cli=26.39, vienna-exact=26.39]
+      dg_open_per_nt: median 3.299 kcal/mol/nt across 2 compatible calculation
+         groups from 3 primary values; 3 raw tools reported (spread 5.67e-05)
+         [rnaplfold=3.299, rnaplfold-cli=3.299, vienna-exact=3.299]
+      mean_base_unpaired: median 3.683e-05 across 3 compatible calculation
+         groups from 3 primary values; 6 raw tools reported (spread 2.341e-08)
+         [contrafold=0.004035, ensemble-sample=2.5e-05, eternafold=0.00157,
+         rnafold=3.683e-05, rnaplfold=3.683e-05,
+         rnastructure-partition=3.685e-05]
+         not blended into the median (different estimand): ensemble-sample
+         (monte_carlo_probability)
+         raw only (material unsupported settings): contrafold (max_bp_span,
+         window_size), eternafold (max_bp_span, window_size)
+      min_base_unpaired: median 3.683e-05 across 3 compatible calculation
+         groups from 3 primary values; 5 raw tools reported (spread 1.337e-08)
+         [contrafold=0.003953, eternafold=0.001541, rnafold=3.683e-05,
+         rnaplfold=3.683e-05, rnastructure-partition=3.684e-05]
+         raw only (material unsupported settings): contrafold (max_bp_span,
+         window_size), eternafold (max_bp_span, window_size)
+      p_unpaired: median 2.521e-19 across 2 compatible calculation groups from
+         3 primary values; 3 raw tools reported (spread 1.855e-22)
+         [rnaplfold=2.52e-19, rnaplfold-cli=2.52e-19, vienna-exact=2.522e-19]
+      paired_fraction: median 1 across 2 compatible calculation groups from 2
+         primary values; 4 raw tools reported (spread 2.341e-08)
+         [contrafold=0.996, eternafold=0.9984, rnafold=1,
+         rnastructure-partition=1]
+         raw only (material unsupported settings): contrafold (max_bp_span,
+         window_size), eternafold (max_bp_span, window_size)
+      seed_dg_open: median 26.39 kcal/mol across 2 compatible calculation
+         groups from 3 primary values; 3 raw tools reported (spread 0.0004536)
+         [rnaplfold=26.39, rnaplfold-cli=26.39, vienna-exact=26.39]
+      seed_length: median 8 across 2 compatible calculation groups from 3
+         primary values; 4 raw tools reported (spread 0) [ensemble-sample=8,
+         rnaplfold=8, rnaplfold-cli=8, vienna-exact=8]
+         not blended into the median (different estimand): ensemble-sample
+         (monte_carlo_probability)
+      seed_p_unpaired: median 2.521e-19 across 2 compatible calculation groups
+         from 3 primary values; 3 raw tools reported (spread 1.855e-22)
+         [rnaplfold=2.52e-19, rnaplfold-cli=2.52e-19, vienna-exact=2.522e-19]
+      seed_start: median 5 across 2 compatible calculation groups from 3
+         primary values; 4 raw tools reported (spread 0) [ensemble-sample=5,
+         rnaplfold=5, rnaplfold-cli=5, vienna-exact=5]
+         not blended into the median (different estimand): ensemble-sample
+         (monte_carlo_probability)
+
+------------------------------------------------------------------------------
+stem_20nt  GCGCGCGCGCGCGCGCGCGC
+   heuristic rank score 0.0000 (coverage 50% of scoring weight)
+   primary opening: vienna-exact / global_ensemble; P=3.58e-25, dG=34.69; unconditioned
+   - seed accessibility is not used because the declared binder has no
+     complementary nucleation mechanism; any raw seed readings are structural
+     diagnostics, not affinity evidence
+   score components:
+      opening cost per nucleotide            value=1.735      desirability=0.000 weight=1.5
+      not scored (no data): dg_open_spread, window_length_spread
+   cross-tool agreement:
+      dg_open: median 34.69 kcal/mol across 2 compatible calculation groups
+         from 3 primary values; 3 raw tools reported (spread 0.0005968)
+         [rnaplfold=34.69, rnaplfold-cli=34.69, vienna-exact=34.69]
+      dg_open_per_nt: median 1.735 kcal/mol/nt across 2 compatible calculation
+         groups from 3 primary values; 3 raw tools reported (spread 2.984e-05)
+         [rnaplfold=1.735, rnaplfold-cli=1.735, vienna-exact=1.735]
+      mean_base_unpaired: median 0.001407 across 3 compatible calculation
+         groups from 3 primary values; 6 raw tools reported (spread 0.0009542)
+         [contrafold=0.01466, ensemble-sample=0.001505, eternafold=0.007954,
+         rnafold=0.001407, rnaplfold=0.001407,
+         rnastructure-partition=0.002362]
+         not blended into the median (different estimand): ensemble-sample
+         (monte_carlo_probability)
+         raw only (material unsupported settings): contrafold (max_bp_span,
+         window_size), eternafold (max_bp_span, window_size)
+      min_base_unpaired: median 3.683e-05 across 3 compatible calculation
+         groups from 3 primary values; 5 raw tools reported (spread 1.337e-08)
+         [contrafold=0.003884, eternafold=0.001501, rnafold=3.683e-05,
+         rnaplfold=3.683e-05, rnastructure-partition=3.684e-05]
+         raw only (material unsupported settings): contrafold (max_bp_span,
+         window_size), eternafold (max_bp_span, window_size)
+      p_unpaired: median 3.582e-25 across 2 compatible calculation groups from
+         3 primary values; 3 raw tools reported (spread 3.469e-28)
+         [rnaplfold=3.581e-25, rnaplfold-cli=3.581e-25,
+         vienna-exact=3.584e-25]
+      paired_fraction: median 0.9981 across 2 compatible calculation groups
+         from 2 primary values; 4 raw tools reported (spread 0.0009542)
+         [contrafold=0.9853, eternafold=0.992, rnafold=0.9986,
+         rnastructure-partition=0.9976]
+         raw only (material unsupported settings): contrafold (max_bp_span,
+         window_size), eternafold (max_bp_span, window_size)
+      seed_dg_open: median 21.28 kcal/mol across 2 compatible calculation
+         groups from 3 primary values; 3 raw tools reported (spread 0.0003653)
+         [rnaplfold=21.28, rnaplfold-cli=21.28, vienna-exact=21.28]
+      seed_length: median 8 across 2 compatible calculation groups from 3
+         primary values; 4 raw tools reported (spread 0) [ensemble-sample=8,
+         rnaplfold=8, rnaplfold-cli=8, vienna-exact=8]
+         not blended into the median (different estimand): ensemble-sample
+         (monte_carlo_probability)
+      seed_p_unpaired: median 1.009e-15 across 2 compatible calculation groups
+         from 3 primary values; 3 raw tools reported (spread 5.98e-19)
+         [rnaplfold=1.009e-15, rnaplfold-cli=1.009e-15,
+         vienna-exact=1.009e-15]
+      seed_start: median 1 across 2 compatible calculation groups from 3
+         primary values; 4 raw tools reported (spread 0) [ensemble-sample=1,
+         rnaplfold=1, rnaplfold-cli=1, vienna-exact=1]
+         not blended into the median (different estimand): ensemble-sample
+         (monte_carlo_probability)
+
+------------------------------------------------------------------------------
+warnings
+------------------------------------------------------------------------------
+ - binder class 'structural_probe' does not declare a complementary nucleation
+     mechanism; seed metrics are excluded from screening and ranking, and the
+     remaining structural-opening rank is not a binding-affinity prediction
+ - scoring criterion 'opening cost per nucleotide' is pinned at its
+     inaccessible anchor for 3/3 candidates in this run; it is not
+     discriminating between them here, whatever its weight (1.5) implies
+ - [ensemble-sample] region stem_8nt was never fully unpaired in 10000
+     samples; sampling can only bound its accessibility at < 0.0003. A
+     constrained partition-function calculation can resolve this event under
+     its declared scope.
+ - [ensemble-sample] region stem_20nt was never fully unpaired in 10000
+     samples; sampling can only bound its accessibility at < 0.0003. A
+     constrained partition-function calculation can resolve this event under
+     its declared scope.

@@ -3,6 +3,11 @@
 *No molecular biology assumed. If you already know what a hairpin is, skim to
 [1.4](#14-the-mistake-this-tool-exists-to-prevent).*
 
+**Short answer.** A target sequence is useful only when the required bases are
+free at the same time. `rnavail` estimates that joint event in one molecule's
+modeled secondary-structure ensemble. For the full derivation, see
+[10. Mathematical and chemical foundations](10-mathematical-and-chemical-foundations.md).
+
 ---
 
 ## 1.1 A thirty-second biology primer
@@ -195,10 +200,9 @@ region within it, it estimates how open that region is *within that
 molecule's own folded structure*. It does **not** predict whether some other
 specific RNA will bind there.
 
-That second question — RNA–RNA interaction prediction — is a genuinely harder
-and still largely unsolved problem. Adapters for it (IntaRNA, RNAup,
-RNAduplex/RNAcofold, OligoWalk) were built here, worked, and were removed
-once the scope was deliberately fixed to the single-molecule question.
+That second question — RNA–RNA interaction prediction — is genuinely harder.
+Programs such as IntaRNA, RNAup, RNAduplex/RNAcofold and OligoWalk are not
+current `rnavail` adapters because their numbers answer a different question.
 
 The practical consequence: **an open site is necessary, not sufficient.** A
 top-ranked candidate here is a shortlist entry — "this site is physically

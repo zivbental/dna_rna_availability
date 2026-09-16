@@ -1,5 +1,11 @@
 # RNA region accessibility: literature review and additional constraints
 
+**Audience note.** This is the evidence-heavy page. For definitions and
+derivations first, read the [reading guide](00-reading-guide.md) and
+[mathematical and chemical foundations](10-mathematical-and-chemical-foundations.md).
+Paragraphs labeled **Deduction** or **Recommendation** are analytical
+conclusions from the cited literature, not direct experimental claims.
+
 RNA accessibility is conditional on the recognition mechanism, molecular environment, and timescale. The probability that a stretch is unpaired in an isolated RNA ensemble is a useful structural quantity, but it does not establish that an oligonucleotide can reach it, invade its neighboring structure, remain bound, or produce a biological response. These distinctions are supported by accessibility-aware interaction models, direct hybridization experiments, and recent measurements of dynamic RNA folding.[^rnaup][^interface][^gor]
 
 This review addresses RNA targets in both purified reactions and cells, emphasizing recognition by complementary DNA or RNA strands, including protein-assisted recognition. It extends the repository's existing focus on joint unpaired probability, opening energy, nucleation seeds, and robustness. Published findings are cited; paragraphs marked **Deduction** or **Recommendation** are analytical conclusions or proposed practices rather than claims that a paper directly validated them. The companion [implementation proposal](09-rna-accessibility-implementation-proposal.md) maps these conclusions to `rnavail`.

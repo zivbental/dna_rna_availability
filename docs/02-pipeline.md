@@ -5,6 +5,11 @@ and a ranked list coming out. Each step names **what** it does, **why**,
 **how** (the actual algorithm), what it **costs**, and **where in the code**
 it lives.
 
+**In ordinary language:** look everywhere with a fast approximate method,
+spend the slower calculations only on a diverse shortlist, keep unlike kinds
+of evidence separate, and explain both the rank and the reasons not to trust
+it. Timing figures below are measurements from saved runs, not guarantees.
+
 ---
 
 ## 2.0 The shape of the whole thing
@@ -92,7 +97,7 @@ adapters.
 requested length.
 
 **How.** `tile_regions(length, window, step)`
-([`core/sequence.py:199`](../rnavail/core/sequence.py)). With `--window 20
+([`core/sequence.py`](../rnavail/core/sequence.py)). With `--window 20
 --step 1` on a 717 nt transcript that is 698 windows: positions 1–20, 2–21,
 3–22, … 698–717.
 
@@ -102,8 +107,9 @@ footprint of your oligo, guide or trigger (see the table in
 [1.2](01-the-question.md#12-the-practical-problem)). It is not a smoothing
 parameter, and the choice genuinely changes the answer: on a real GFP
 transcript, the top-15 sites at window length 8 and at window length 20 share
-**exactly one site**. 20 nt is the sensible default only because it sits
-mid-range across common binders.
+**exactly one site**. The current 25-nt default is only a convenient starting
+point near common complementary-binder footprints; it must be replaced by the
+actual physical footprint of the intended binder.
 
 **Why `--step 1` is the default and costs nothing.** See step 3 — the
 screening engine computes every position in one pass regardless, so a coarser
@@ -152,8 +158,9 @@ screen-tool name is still rejected before a run starts. Every deep-stage tool
 also degrades to a visible failed or skipped row instead
 ([3.4](03-architecture.md#34-the-adapter-contract)).
 
-**Cost.** ~0.3 s for a 717 nt transcript. O(n·L²) in transcript length and
-max pair span.
+**Cost.** A historical 717-nt benchmark took about 0.3 s in this environment.
+The qualitative scaling is approximately O(n·L²) in transcript length `n` and
+maximum pair span `L`; hardware, library version and settings change runtime.
 
 ---
 
@@ -167,7 +174,7 @@ and thrown away. Two genuinely useful pictures were sitting in memory
 unrendered.
 
 **How.** `_build_profile()`
-([`pipeline/run.py:301`](../rnavail/pipeline/run.py)) computes the table once
+([`pipeline/run.py`](../rnavail/pipeline/run.py)) computes the table once
 via `local_unpaired_matrix`, then:
 
 - **the profile** — `dG_open/nt` for a `--window`-length interval starting at
@@ -184,8 +191,9 @@ open across many window lengths — a broad, robust element you can target with
 almost any footprint. An **isolated fleck** is a site accessible at one
 specific length only.
 
-**Cost.** One extra RNAplfold pass, ~0.3 s. Skipped with a warning if the
-ViennaRNA Python bindings are unavailable.
+**Cost.** One extra RNAplfold pass (about 0.3 s in the historical 717-nt
+benchmark). Skipped with a warning if the ViennaRNA Python bindings are
+unavailable.
 
 ---
 
@@ -194,7 +202,7 @@ ViennaRNA Python bindings are unavailable.
 **What.** Reduce hundreds of screened windows to the `--keep` best, for the
 expensive stage.
 
-**How.** `_shortlist()` ([`pipeline/run.py:349`](../rnavail/pipeline/run.py)):
+**How.** `_shortlist()` ([`pipeline/run.py`](../rnavail/pipeline/run.py)):
 
 1. For complementary recognition classes, sort every screened window by
    **seed accessibility first** (`seed_p_unpaired`), then by opening cost per
@@ -226,7 +234,7 @@ exactly what the landscape plot from step 4 lets you see around it.
 **What.** Run every applicable tool over the surviving candidates. This is
 where `evaluate` starts.
 
-**How.** `evaluate()` ([`pipeline/run.py:131`](../rnavail/pipeline/run.py))
+**How.** `evaluate()` ([`pipeline/run.py`](../rnavail/pipeline/run.py))
 builds one `AccessibilityRequest` — sequence, regions, model settings,
 recognition event, experimental condition, optional probing data, and seed
 length — and hands the *same* request to every adapter that `select()`
@@ -287,9 +295,10 @@ presented as a globally span-limited fold.
 `skipped` row with a fix hint. The report tells you what ran, what failed,
 and why.
 
-**Cost.** The dominant stage. On a 717 nt transcript with 10 candidates and
-all tools: ~55 s of fixed cost (tools that fold the whole molecule once) plus
-~7 s per candidate.
+**Cost.** The dominant stage. One historical 717-nt run with ten candidates
+showed roughly 55 s of whole-molecule work plus roughly 7 s per candidate.
+Treat this only as an order-of-magnitude example; adapter versions, sequence,
+settings and hardware matter.
 
 ---
 
@@ -416,14 +425,15 @@ The full logic, with the evidence behind it, is
 **heuristic rank score**.
 
 **How.** Two stages, in `score_candidate()`
-([`pipeline/score.py:306`](../rnavail/pipeline/score.py)):
+([`pipeline/score.py`](../rnavail/pipeline/score.py)):
 
 1. **Desirability.** Each scored metric is mapped onto [0, 1] through a ramp
    with **absolute anchors** — so a candidate's score does not change when
    you add or remove other candidates from the run.
 2. **Weighted geometric mean** of those desirabilities.
 
-Only **four** of the ~19 computed metrics feed the score. The rest are
+Only **four** of the 24 currently defined metric keys can feed the default
+score, and a particular run usually produces only a subset. The rest are
 diagnostic. That is deliberate and is explained in
 [5.4](05-consensus-and-scoring.md#54-what-is-scored-and-what-is-only-reported).
 
@@ -453,7 +463,7 @@ basis was.
 
 **What.** Turn the numbers into the handful of sentences worth reading.
 
-**How.** `_interpret()` ([`pipeline/run.py:864`](../rnavail/pipeline/run.py))
+**How.** `_interpret()` ([`pipeline/run.py`](../rnavail/pipeline/run.py))
 checks each candidate against a list of specific, named failure modes and
 emits a plain-English note for each one that fires. These are diagnoses, not
 decoration — each names something that changes what you would do next:
@@ -483,7 +493,7 @@ decoration — each names something that changes what you would do next:
 both need every candidate scored first.
 
 **How.** `_diagnose_run()`
-([`pipeline/run.py:767`](../rnavail/pipeline/run.py)):
+([`pipeline/run.py`](../rnavail/pipeline/run.py)):
 
 - **Score saturation.** If a scoring criterion is pinned at an anchor
   (desirability within 0.02 of 0 or 1) for at least half the run's

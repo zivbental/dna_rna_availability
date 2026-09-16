@@ -8,6 +8,11 @@ process are deliberately *not* automatic.
 Everything here lives in
 [`pipeline/score.py`](../rnavail/pipeline/score.py).
 
+**Plain-language summary.** First avoid comparisons that mix unlike
+quantities. Then summarize genuinely comparable calculations. Finally map at
+most four structural preferences to 0–1 and combine them. The resulting rank
+orders candidates; it is not the probability that an experiment will work.
+
 ---
 
 ## 5.1 Four gates before any averaging
@@ -307,8 +312,8 @@ are **four different numbers**:
 
 | Count | What it is |
 |---|---|
-| **~11** | tools that ran |
-| **~19** | distinct metrics computed for a candidate |
+| **up to 12** | adapters that can run; a particular request may skip or fail some |
+| **24 defined** | metric keys in the shared vocabulary; a candidate receives a subset |
 | **4** | metrics that feed the composite **heuristic rank score** |
 | **up to 16** | rows in the HTML report's properties table |
 

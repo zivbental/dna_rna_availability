@@ -17,6 +17,11 @@ chosen temperature and monovalent-salt folding protocol.
 
 Everything below is the rest of the picture.
 
+For a practical decision, translate every limitation into one of three
+actions: declare the missing condition, run a sensitivity check, or obtain an
+orthogonal experiment. More secondary-structure software cannot recover
+chemistry or biology that the model does not represent.
+
 ---
 
 ## 7.2 Scope boundaries — deliberate, not gaps
@@ -27,11 +32,11 @@ This is the big one. `rnavail` answers a **single-molecule** question. Given
 one sequence, how open is this region within *its own* folded structure. It
 does **not** predict whether a specific other RNA will bind there.
 
-RNA–RNA interaction prediction is a separate and still largely unsolved
-problem. Adapters for it — IntaRNA, RNAup, RNAduplex/RNAcofold, OligoWalk —
-were built in this repository, worked, and were **removed** once the scope was
-fixed to the single-molecule question. The binaries remain installed if that
-layer is ever wanted back.
+RNA–RNA interaction prediction is a separate and still difficult problem.
+Programs such as IntaRNA, RNAup, RNAduplex/RNAcofold and OligoWalk are **not
+current `rnavail` adapters**. Adding an interaction layer would require a
+separate event definition, chemistry checks, concentration model and direct
+validation; see the [roadmap](09-rna-accessibility-implementation-proposal.md).
 
 **The practical consequence:** an open site is *necessary, not sufficient*. A
 top-ranked candidate is a shortlist entry — "physically reachable" — not a
@@ -42,16 +47,15 @@ somewhere else, is a question this tool does not attempt.
 
 Equilibrium complex concentrations, ensemble defect, crosstalk across a
 multi-strand gate — the design tier described in the source document — is not
-implemented. That needs NUPACK, which was tried and removed because it could
-not be exercised without a separate paid licence in this environment.
+implemented. A future implementation would need an appropriate multi-strand
+thermodynamic engine, a usable licence, and validation for the intended gate.
 
 ### No 3D, no molecular dynamics
 
-There is no tertiary-structure or coarse-grained MD layer. A Martini 3 RNA +
-GROMACS stage was prototyped and removed: it needs a 3D starting structure
-(no offline predictor is bundled), the Martini 3 RNA force-field files,
-GROMACS itself, and realistically GPU/HPC access. None of that is available
-here.
+There is no tertiary-structure or coarse-grained MD layer. Such a stage would
+need a defensible 3D starting structure, an RNA force field, ion treatment,
+replicate simulations, convergence checks, substantial compute, and direct
+validation. None is part of the current command set.
 
 This matters more than it sounds, because of the next item.
 
@@ -126,8 +130,8 @@ These are within scope and quantified, which makes them manageable.
 
 ### Nested structure only — the pseudoknot bias
 
-Eleven of the twelve adapters are restricted to nested secondary structure by
-construction. A pseudoknotted site reads as open to all of them.
+The conventional folding engines are restricted to nested secondary structure
+by construction. A pseudoknotted site can therefore look open to them.
 
 This is a **one-directional bias**: predicted availability is too high, never
 too low. `probknot` exists to detect it, and a note fires when it pairs a
