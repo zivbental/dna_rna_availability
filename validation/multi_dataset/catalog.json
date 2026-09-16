@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "datasets": [
+    {
+      "id": "pars_yeast_invitro", "provider": "geo_pars", "species": "yeast",
+      "study": "Kertesz et al. 2010", "doi": "10.1038/nature09322",
+      "assay": "PARS", "higher_is": "paired", "observable_bases": "ACGU",
+      "conditions": {"environment": "invitro"},
+      "source_url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE22393"
+    },
+    {
+      "id": "dms_yeast_invitro", "provider": "rasp", "species": "yeast",
+      "study": "Rouskin et al. 2014", "doi": "10.1038/nature12894",
+      "assay": "DMS-seq", "higher_is": "available", "observable_bases": "AC",
+      "conditions": {"environment": "invitro", "cell_line": "BY4741"},
+      "track_condition": "invitro",
+      "track": "yeast/DMS_Genome-wide_Nature_2014/yeast-vitro.bed.gz"
+    },
+    {
+      "id": "dms_yeast_invivo", "provider": "rasp", "species": "yeast",
+      "study": "Rouskin et al. 2014", "doi": "10.1038/nature12894",
+      "assay": "DMS-seq", "higher_is": "available", "observable_bases": "AC",
+      "conditions": {"environment": "invivo", "cell_line": "BY4741"},
+      "track_condition": "invivo",
+      "track": "yeast/DMS_Genome-wide_Nature_2014/yeast-vivo.bed.gz"
+    },
+    {
+      "id": "icshape_mouse_invitro", "provider": "rasp", "species": "mm10",
+      "study": "Spitale et al. 2015", "doi": "10.1038/nature14263",
+      "assay": "icSHAPE", "higher_is": "available", "observable_bases": "ACGU",
+      "conditions": {"environment": "invitro", "cell_line": "mES"},
+      "track_condition": "invitro",
+      "track": "mm10/icSHAPE-Nature-2015/v65_vitroNAIN3_score.bed.gz"
+    },
+    {
+      "id": "icshape_mouse_invivo", "provider": "rasp", "species": "mm10",
+      "study": "Spitale et al. 2015", "doi": "10.1038/nature14263",
+      "assay": "icSHAPE", "higher_is": "available", "observable_bases": "ACGU",
+      "conditions": {"environment": "invivo", "cell_line": "mES"},
+      "track_condition": "invivo",
+      "track": "mm10/icSHAPE-Nature-2015/v65_vivoNAIN3_score.bed.gz"
+    },
+    {
+      "id": "shape_ecoli_cellfree", "provider": "rasp", "species": "ecoli",
+      "annotation_provider": "genbank", "genbank_accession": "U00096.2",
+      "annotation_url": "https://getentry.ddbj.nig.ac.jp/getentry/na/U00096.2?filetype=gb",
+      "study": "Mustoe et al. 2018", "doi": "10.1016/j.cell.2018.02.034",
+      "assay": "SHAPE-MaP", "higher_is": "available", "observable_bases": "ACGU",
+      "conditions": {"environment": "Cellfree", "cell_line": "MG1655"},
+      "track_condition": "Cellfree", "track": "ecoli/Cell_2018/cellfree_SHAPE.bed.gz"
+    },
+    {
+      "id": "shape_ecoli_incell", "provider": "rasp", "species": "ecoli",
+      "annotation_provider": "genbank", "genbank_accession": "U00096.2",
+      "annotation_url": "https://getentry.ddbj.nig.ac.jp/getentry/na/U00096.2?filetype=gb",
+      "study": "Mustoe et al. 2018", "doi": "10.1016/j.cell.2018.02.034",
+      "assay": "SHAPE-MaP", "higher_is": "available", "observable_bases": "ACGU",
+      "conditions": {"environment": "incell", "cell_line": "MG1655"},
+      "track_condition": "incell", "track": "ecoli/Cell_2018/incell_SHAPE.bed.gz"
+    }
+  ]
+}

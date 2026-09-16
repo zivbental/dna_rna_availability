@@ -37,6 +37,11 @@ The track format and its sequence-hash requirement are documented in the
 
 ## Documentation
 
+To benchmark the current RNA availability ranking across PARS, DMS-seq,
+icSHAPE and SHAPE-MaP experiments, see the
+[multi-dataset run guide](validation/multi_dataset/README.md). It includes
+download/preparation commands, parallel execution, resume support and per-RNA reports.
+
 The documentation is written in layers. Start with the reading guide if RNA
 folding is new to you; each technical page begins with a plain-language answer
 and then develops the chemistry, mathematics, algorithm and implementation.
