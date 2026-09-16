@@ -1,0 +1,1573 @@
+{
+  "report_schema_version": "2.0",
+  "mode": "evaluate",
+  "sequence": {
+    "name": "disrupted_hairpin",
+    "length": 48,
+    "molecule": "rna",
+    "gc_fraction": 0.4167,
+    "sha256": "1d1966eed7c0f703c5106fc9fc625f572545c4fbdb252011560bbf7e4d02ec44"
+  },
+  "settings": {
+    "temperature_c": 37.0,
+    "param_set": "turner2004",
+    "dangles": 2,
+    "no_lonely_pairs": false,
+    "no_gu": false,
+    "no_gu_closure": false,
+    "gquad": false,
+    "circular": false,
+    "salt_molar": null,
+    "max_bp_span": 48,
+    "global_max_bp_span": null,
+    "window_size": 48,
+    "max_unpaired": 30
+  },
+  "protocol": "T37/turner2004/d2/L48/W48/GLall",
+  "recognition_spec_id": "recognition:21dceb14a576f6cd",
+  "recognition": {
+    "binder_class": "unspecified",
+    "partner_sequence": null,
+    "partner_chemistry": "unspecified",
+    "seed_mode": "any",
+    "seed_lengths": [
+      8
+    ],
+    "seed_start": null,
+    "listed_seed_starts": [],
+    "orientation": "unspecified",
+    "endpoint": "structural_opening"
+  },
+  "condition": {
+    "condition_id": "unspecified",
+    "temperature_c": 37.0,
+    "sodium_molar": null,
+    "potassium_molar": null,
+    "magnesium_total_molar": null,
+    "magnesium_free_molar": null,
+    "ph": null,
+    "incubation_seconds": null,
+    "preparation": "unspecified",
+    "partner_concentration_molar": null,
+    "crowding_agent": null,
+    "crowding_concentration": null,
+    "organism": null,
+    "cell_type": null,
+    "compartment": null
+  },
+  "probing": null,
+  "evidence_tracks": [],
+  "tools": {
+    "ran": [
+      "vienna-exact",
+      "rnafold"
+    ],
+    "failed": [],
+    "skipped": []
+  },
+  "candidates": [
+    {
+      "region": {
+        "start": 21,
+        "end": 48,
+        "length": 28,
+        "name": "A_tail"
+      },
+      "subsequence": "AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "metrics": {
+        "mean_base_unpaired": 1.0,
+        "min_base_unpaired": 1.0,
+        "paired_fraction": 0.0,
+        "shannon_entropy": 0.0,
+        "p_unpaired": 1.0,
+        "dg_open": 0.0,
+        "dg_open_per_nt": 0.0,
+        "seed_start": 21.0,
+        "seed_length": 8.0,
+        "seed_p_unpaired": 1.0,
+        "seed_dg_open": 0.0
+      },
+      "consensus": {
+        "dg_open": {
+          "metric": "dg_open",
+          "n_tools": 1,
+          "n_eligible": 1,
+          "n_primary": 1,
+          "n_independent": 1,
+          "median": 0.0,
+          "spread": 0.0,
+          "by_tool": {
+            "vienna-exact": 0.0
+          },
+          "groups": {
+            "vienna-exact": "vienna-global-pf"
+          },
+          "eligible_for_primary": [
+            "vienna-exact"
+          ],
+          "primary_for_median": [
+            "vienna-exact"
+          ],
+          "excluded_from_median": {},
+          "excluded_for_conditioning": {},
+          "excluded_for_protocol": {}
+        },
+        "dg_open_per_nt": {
+          "metric": "dg_open_per_nt",
+          "n_tools": 1,
+          "n_eligible": 1,
+          "n_primary": 1,
+          "n_independent": 1,
+          "median": 0.0,
+          "spread": 0.0,
+          "by_tool": {
+            "vienna-exact": 0.0
+          },
+          "groups": {
+            "vienna-exact": "vienna-global-pf"
+          },
+          "eligible_for_primary": [
+            "vienna-exact"
+          ],
+          "primary_for_median": [
+            "vienna-exact"
+          ],
+          "excluded_from_median": {},
+          "excluded_for_conditioning": {},
+          "excluded_for_protocol": {}
+        },
+        "p_unpaired": {
+          "metric": "p_unpaired",
+          "n_tools": 1,
+          "n_eligible": 1,
+          "n_primary": 1,
+          "n_independent": 1,
+          "median": 1.0,
+          "spread": 0.0,
+          "by_tool": {
+            "vienna-exact": 1.0
+          },
+          "groups": {
+            "vienna-exact": "vienna-global-pf"
+          },
+          "eligible_for_primary": [
+            "vienna-exact"
+          ],
+          "primary_for_median": [
+            "vienna-exact"
+          ],
+          "excluded_from_median": {},
+          "excluded_for_conditioning": {},
+          "excluded_for_protocol": {}
+        },
+        "seed_start": {
+          "metric": "seed_start",
+          "n_tools": 1,
+          "n_eligible": 1,
+          "n_primary": 1,
+          "n_independent": 1,
+          "median": 21.0,
+          "spread": 0.0,
+          "by_tool": {
+            "vienna-exact": 21.0
+          },
+          "groups": {
+            "vienna-exact": "vienna-global-pf"
+          },
+          "eligible_for_primary": [
+            "vienna-exact"
+          ],
+          "primary_for_median": [
+            "vienna-exact"
+          ],
+          "excluded_from_median": {},
+          "excluded_for_conditioning": {},
+          "excluded_for_protocol": {}
+        },
+        "seed_length": {
+          "metric": "seed_length",
+          "n_tools": 1,
+          "n_eligible": 1,
+          "n_primary": 1,
+          "n_independent": 1,
+          "median": 8.0,
+          "spread": 0.0,
+          "by_tool": {
+            "vienna-exact": 8.0
+          },
+          "groups": {
+            "vienna-exact": "vienna-global-pf"
+          },
+          "eligible_for_primary": [
+            "vienna-exact"
+          ],
+          "primary_for_median": [
+            "vienna-exact"
+          ],
+          "excluded_from_median": {},
+          "excluded_for_conditioning": {},
+          "excluded_for_protocol": {}
+        },
+        "seed_dg_open": {
+          "metric": "seed_dg_open",
+          "n_tools": 1,
+          "n_eligible": 1,
+          "n_primary": 1,
+          "n_independent": 1,
+          "median": 0.0,
+          "spread": 0.0,
+          "by_tool": {
+            "vienna-exact": 0.0
+          },
+          "groups": {
+            "vienna-exact": "vienna-global-pf"
+          },
+          "eligible_for_primary": [
+            "vienna-exact"
+          ],
+          "primary_for_median": [
+            "vienna-exact"
+          ],
+          "excluded_from_median": {},
+          "excluded_for_conditioning": {},
+          "excluded_for_protocol": {}
+        },
+        "seed_p_unpaired": {
+          "metric": "seed_p_unpaired",
+          "n_tools": 1,
+          "n_eligible": 1,
+          "n_primary": 1,
+          "n_independent": 1,
+          "median": 1.0,
+          "spread": 0.0,
+          "by_tool": {
+            "vienna-exact": 1.0
+          },
+          "groups": {
+            "vienna-exact": "vienna-global-pf"
+          },
+          "eligible_for_primary": [
+            "vienna-exact"
+          ],
+          "primary_for_median": [
+            "vienna-exact"
+          ],
+          "excluded_from_median": {},
+          "excluded_for_conditioning": {},
+          "excluded_for_protocol": {}
+        },
+        "mean_base_unpaired": {
+          "metric": "mean_base_unpaired",
+          "n_tools": 1,
+          "n_eligible": 1,
+          "n_primary": 1,
+          "n_independent": 1,
+          "median": 1.0,
+          "spread": 0.0,
+          "by_tool": {
+            "rnafold": 1.0
+          },
+          "groups": {
+            "rnafold": "vienna-global-pf"
+          },
+          "eligible_for_primary": [
+            "rnafold"
+          ],
+          "primary_for_median": [
+            "rnafold"
+          ],
+          "excluded_from_median": {},
+          "excluded_for_conditioning": {},
+          "excluded_for_protocol": {}
+        },
+        "min_base_unpaired": {
+          "metric": "min_base_unpaired",
+          "n_tools": 1,
+          "n_eligible": 1,
+          "n_primary": 1,
+          "n_independent": 1,
+          "median": 1.0,
+          "spread": 0.0,
+          "by_tool": {
+            "rnafold": 1.0
+          },
+          "groups": {
+            "rnafold": "vienna-global-pf"
+          },
+          "eligible_for_primary": [
+            "rnafold"
+          ],
+          "primary_for_median": [
+            "rnafold"
+          ],
+          "excluded_from_median": {},
+          "excluded_for_conditioning": {},
+          "excluded_for_protocol": {}
+        },
+        "paired_fraction": {
+          "metric": "paired_fraction",
+          "n_tools": 1,
+          "n_eligible": 1,
+          "n_primary": 1,
+          "n_independent": 1,
+          "median": 0.0,
+          "spread": 0.0,
+          "by_tool": {
+            "rnafold": 0.0
+          },
+          "groups": {
+            "rnafold": "vienna-global-pf"
+          },
+          "eligible_for_primary": [
+            "rnafold"
+          ],
+          "primary_for_median": [
+            "rnafold"
+          ],
+          "excluded_from_median": {},
+          "excluded_for_conditioning": {},
+          "excluded_for_protocol": {}
+        },
+        "shannon_entropy": {
+          "metric": "shannon_entropy",
+          "n_tools": 1,
+          "n_eligible": 1,
+          "n_primary": 1,
+          "n_independent": 1,
+          "median": 0.0,
+          "spread": 0.0,
+          "by_tool": {
+            "rnafold": 0.0
+          },
+          "groups": {
+            "rnafold": "vienna-global-pf"
+          },
+          "eligible_for_primary": [
+            "rnafold"
+          ],
+          "primary_for_median": [
+            "rnafold"
+          ],
+          "excluded_from_median": {},
+          "excluded_for_conditioning": {},
+          "excluded_for_protocol": {}
+        }
+      },
+      "score": {
+        "heuristic_rank_score": 1.0,
+        "score": 1.0,
+        "coverage": 0.7,
+        "missing_metrics": [
+          "dg_open_spread",
+          "window_length_spread"
+        ],
+        "components": [
+          {
+            "metric": "seed_p_unpaired",
+            "label": "seed accessibility",
+            "weight": 2.0,
+            "value": 1.0,
+            "desirability": 1.0,
+            "present": true
+          },
+          {
+            "metric": "dg_open_per_nt",
+            "label": "opening cost per nucleotide",
+            "weight": 1.5,
+            "value": 0.0,
+            "desirability": 1.0,
+            "present": true
+          },
+          {
+            "metric": "dg_open_spread",
+            "label": "robustness across model settings",
+            "weight": 0.75,
+            "value": null,
+            "desirability": null,
+            "present": false
+          },
+          {
+            "metric": "window_length_spread",
+            "label": "robustness across window length",
+            "weight": 0.75,
+            "value": null,
+            "desirability": null,
+            "present": false
+          }
+        ]
+      },
+      "heuristic_rank_score": 1.0,
+      "notes": [],
+      "detail": {},
+      "primary_opening_observation_id": "vienna-exact:21-48:unconditioned",
+      "opening_observations": [
+        {
+          "observation_id": "vienna-exact:21-48:unconditioned",
+          "tool": "vienna-exact",
+          "interval": {
+            "start": 21,
+            "end": 48
+          },
+          "p_unpaired": 1.0,
+          "dg_open_kcal_mol": 0.0,
+          "temperature_c": 37.0,
+          "event": "all_target_nucleotides_unpaired",
+          "model_family": "vienna-turner",
+          "algorithm": "constrained-partition-function",
+          "sequence_scope": "global_ensemble",
+          "conditioning_id": "unconditioned",
+          "estimate_kind": "point",
+          "p_lower_bound": null,
+          "p_upper_bound": null,
+          "seed": {
+            "start": 21,
+            "length": 8,
+            "p_unpaired": 1.0,
+            "dg_open_kcal_mol": 0.0
+          },
+          "censor_reason": null
+        }
+      ],
+      "biological_evidence": []
+    },
+    {
+      "region": {
+        "start": 29,
+        "end": 48,
+        "length": 20,
+        "name": "A_tail_20nt"
+      },
+      "subsequence": "AAAAAAAAAAAAAAAAAAAA",
+      "metrics": {
+        "mean_base_unpaired": 1.0,
+        "min_base_unpaired": 1.0,
+        "paired_fraction": 0.0,
+        "shannon_entropy": 0.0,
+        "p_unpaired": 1.0,
+        "dg_open": 0.0,
+        "dg_open_per_nt": 0.0,
+        "seed_start": 29.0,
+        "seed_length": 8.0,
+        "seed_p_unpaired": 1.0,
+        "seed_dg_open": 0.0
+      },
+      "consensus": {
+        "dg_open": {
+          "metric": "dg_open",
+          "n_tools": 1,
+          "n_eligible": 1,
+          "n_primary": 1,
+          "n_independent": 1,
+          "median": 0.0,
+          "spread": 0.0,
+          "by_tool": {
+            "vienna-exact": 0.0
+          },
+          "groups": {
+            "vienna-exact": "vienna-global-pf"
+          },
+          "eligible_for_primary": [
+            "vienna-exact"
+          ],
+          "primary_for_median": [
+            "vienna-exact"
+          ],
+          "excluded_from_median": {},
+          "excluded_for_conditioning": {},
+          "excluded_for_protocol": {}
+        },
+        "dg_open_per_nt": {
+          "metric": "dg_open_per_nt",
+          "n_tools": 1,
+          "n_eligible": 1,
+          "n_primary": 1,
+          "n_independent": 1,
+          "median": 0.0,
+          "spread": 0.0,
+          "by_tool": {
+            "vienna-exact": 0.0
+          },
+          "groups": {
+            "vienna-exact": "vienna-global-pf"
+          },
+          "eligible_for_primary": [
+            "vienna-exact"
+          ],
+          "primary_for_median": [
+            "vienna-exact"
+          ],
+          "excluded_from_median": {},
+          "excluded_for_conditioning": {},
+          "excluded_for_protocol": {}
+        },
+        "p_unpaired": {
+          "metric": "p_unpaired",
+          "n_tools": 1,
+          "n_eligible": 1,
+          "n_primary": 1,
+          "n_independent": 1,
+          "median": 1.0,
+          "spread": 0.0,
+          "by_tool": {
+            "vienna-exact": 1.0
+          },
+          "groups": {
+            "vienna-exact": "vienna-global-pf"
+          },
+          "eligible_for_primary": [
+            "vienna-exact"
+          ],
+          "primary_for_median": [
+            "vienna-exact"
+          ],
+          "excluded_from_median": {},
+          "excluded_for_conditioning": {},
+          "excluded_for_protocol": {}
+        },
+        "seed_start": {
+          "metric": "seed_start",
+          "n_tools": 1,
+          "n_eligible": 1,
+          "n_primary": 1,
+          "n_independent": 1,
+          "median": 29.0,
+          "spread": 0.0,
+          "by_tool": {
+            "vienna-exact": 29.0
+          },
+          "groups": {
+            "vienna-exact": "vienna-global-pf"
+          },
+          "eligible_for_primary": [
+            "vienna-exact"
+          ],
+          "primary_for_median": [
+            "vienna-exact"
+          ],
+          "excluded_from_median": {},
+          "excluded_for_conditioning": {},
+          "excluded_for_protocol": {}
+        },
+        "seed_length": {
+          "metric": "seed_length",
+          "n_tools": 1,
+          "n_eligible": 1,
+          "n_primary": 1,
+          "n_independent": 1,
+          "median": 8.0,
+          "spread": 0.0,
+          "by_tool": {
+            "vienna-exact": 8.0
+          },
+          "groups": {
+            "vienna-exact": "vienna-global-pf"
+          },
+          "eligible_for_primary": [
+            "vienna-exact"
+          ],
+          "primary_for_median": [
+            "vienna-exact"
+          ],
+          "excluded_from_median": {},
+          "excluded_for_conditioning": {},
+          "excluded_for_protocol": {}
+        },
+        "seed_dg_open": {
+          "metric": "seed_dg_open",
+          "n_tools": 1,
+          "n_eligible": 1,
+          "n_primary": 1,
+          "n_independent": 1,
+          "median": 0.0,
+          "spread": 0.0,
+          "by_tool": {
+            "vienna-exact": 0.0
+          },
+          "groups": {
+            "vienna-exact": "vienna-global-pf"
+          },
+          "eligible_for_primary": [
+            "vienna-exact"
+          ],
+          "primary_for_median": [
+            "vienna-exact"
+          ],
+          "excluded_from_median": {},
+          "excluded_for_conditioning": {},
+          "excluded_for_protocol": {}
+        },
+        "seed_p_unpaired": {
+          "metric": "seed_p_unpaired",
+          "n_tools": 1,
+          "n_eligible": 1,
+          "n_primary": 1,
+          "n_independent": 1,
+          "median": 1.0,
+          "spread": 0.0,
+          "by_tool": {
+            "vienna-exact": 1.0
+          },
+          "groups": {
+            "vienna-exact": "vienna-global-pf"
+          },
+          "eligible_for_primary": [
+            "vienna-exact"
+          ],
+          "primary_for_median": [
+            "vienna-exact"
+          ],
+          "excluded_from_median": {},
+          "excluded_for_conditioning": {},
+          "excluded_for_protocol": {}
+        },
+        "mean_base_unpaired": {
+          "metric": "mean_base_unpaired",
+          "n_tools": 1,
+          "n_eligible": 1,
+          "n_primary": 1,
+          "n_independent": 1,
+          "median": 1.0,
+          "spread": 0.0,
+          "by_tool": {
+            "rnafold": 1.0
+          },
+          "groups": {
+            "rnafold": "vienna-global-pf"
+          },
+          "eligible_for_primary": [
+            "rnafold"
+          ],
+          "primary_for_median": [
+            "rnafold"
+          ],
+          "excluded_from_median": {},
+          "excluded_for_conditioning": {},
+          "excluded_for_protocol": {}
+        },
+        "min_base_unpaired": {
+          "metric": "min_base_unpaired",
+          "n_tools": 1,
+          "n_eligible": 1,
+          "n_primary": 1,
+          "n_independent": 1,
+          "median": 1.0,
+          "spread": 0.0,
+          "by_tool": {
+            "rnafold": 1.0
+          },
+          "groups": {
+            "rnafold": "vienna-global-pf"
+          },
+          "eligible_for_primary": [
+            "rnafold"
+          ],
+          "primary_for_median": [
+            "rnafold"
+          ],
+          "excluded_from_median": {},
+          "excluded_for_conditioning": {},
+          "excluded_for_protocol": {}
+        },
+        "paired_fraction": {
+          "metric": "paired_fraction",
+          "n_tools": 1,
+          "n_eligible": 1,
+          "n_primary": 1,
+          "n_independent": 1,
+          "median": 0.0,
+          "spread": 0.0,
+          "by_tool": {
+            "rnafold": 0.0
+          },
+          "groups": {
+            "rnafold": "vienna-global-pf"
+          },
+          "eligible_for_primary": [
+            "rnafold"
+          ],
+          "primary_for_median": [
+            "rnafold"
+          ],
+          "excluded_from_median": {},
+          "excluded_for_conditioning": {},
+          "excluded_for_protocol": {}
+        },
+        "shannon_entropy": {
+          "metric": "shannon_entropy",
+          "n_tools": 1,
+          "n_eligible": 1,
+          "n_primary": 1,
+          "n_independent": 1,
+          "median": 0.0,
+          "spread": 0.0,
+          "by_tool": {
+            "rnafold": 0.0
+          },
+          "groups": {
+            "rnafold": "vienna-global-pf"
+          },
+          "eligible_for_primary": [
+            "rnafold"
+          ],
+          "primary_for_median": [
+            "rnafold"
+          ],
+          "excluded_from_median": {},
+          "excluded_for_conditioning": {},
+          "excluded_for_protocol": {}
+        }
+      },
+      "score": {
+        "heuristic_rank_score": 1.0,
+        "score": 1.0,
+        "coverage": 0.7,
+        "missing_metrics": [
+          "dg_open_spread",
+          "window_length_spread"
+        ],
+        "components": [
+          {
+            "metric": "seed_p_unpaired",
+            "label": "seed accessibility",
+            "weight": 2.0,
+            "value": 1.0,
+            "desirability": 1.0,
+            "present": true
+          },
+          {
+            "metric": "dg_open_per_nt",
+            "label": "opening cost per nucleotide",
+            "weight": 1.5,
+            "value": 0.0,
+            "desirability": 1.0,
+            "present": true
+          },
+          {
+            "metric": "dg_open_spread",
+            "label": "robustness across model settings",
+            "weight": 0.75,
+            "value": null,
+            "desirability": null,
+            "present": false
+          },
+          {
+            "metric": "window_length_spread",
+            "label": "robustness across window length",
+            "weight": 0.75,
+            "value": null,
+            "desirability": null,
+            "present": false
+          }
+        ]
+      },
+      "heuristic_rank_score": 1.0,
+      "notes": [],
+      "detail": {},
+      "primary_opening_observation_id": "vienna-exact:29-48:unconditioned",
+      "opening_observations": [
+        {
+          "observation_id": "vienna-exact:29-48:unconditioned",
+          "tool": "vienna-exact",
+          "interval": {
+            "start": 29,
+            "end": 48
+          },
+          "p_unpaired": 1.0,
+          "dg_open_kcal_mol": 0.0,
+          "temperature_c": 37.0,
+          "event": "all_target_nucleotides_unpaired",
+          "model_family": "vienna-turner",
+          "algorithm": "constrained-partition-function",
+          "sequence_scope": "global_ensemble",
+          "conditioning_id": "unconditioned",
+          "estimate_kind": "point",
+          "p_lower_bound": null,
+          "p_upper_bound": null,
+          "seed": {
+            "start": 29,
+            "length": 8,
+            "p_unpaired": 1.0,
+            "dg_open_kcal_mol": 0.0
+          },
+          "censor_reason": null
+        }
+      ],
+      "biological_evidence": []
+    }
+  ],
+  "tool_results": [
+    {
+      "tool": "vienna-exact",
+      "tier": "accessibility",
+      "status": "ok",
+      "version": "ViennaRNA 2.7.2",
+      "runtime_s": 0.0136,
+      "independence_group": "vienna-global-pf",
+      "estimand": "probability",
+      "model_family": "vienna-turner",
+      "algorithm": "constrained-partition-function",
+      "conditioning": {
+        "status": "not_requested",
+        "conditioning_id": "unconditioned"
+      },
+      "applied_protocol": {
+        "requested": {
+          "temperature_c": 37.0,
+          "param_set": "turner2004",
+          "dangles": 2,
+          "no_lonely_pairs": false,
+          "no_gu": false,
+          "no_gu_closure": false,
+          "gquad": false,
+          "circular": false,
+          "salt_molar": null,
+          "max_bp_span": 48,
+          "global_max_bp_span": null,
+          "window_size": 48,
+          "max_unpaired": 30
+        },
+        "applied": {
+          "temperature_c": 37.0,
+          "param_set": "turner2004",
+          "dangles": 2,
+          "no_lonely_pairs": false,
+          "no_gu": false,
+          "no_gu_closure": false,
+          "gquad": false,
+          "circular": false,
+          "salt_molar": null,
+          "global_max_bp_span": null
+        },
+        "unsupported": {},
+        "ignored_by_design": {
+          "max_bp_span": "not material for this adapter's declared calculation",
+          "window_size": "not material for this adapter's declared calculation",
+          "max_unpaired": "not material for this adapter's declared calculation"
+        },
+        "compatible_with_requested": true
+      },
+      "globals": {
+        "ensemble_free_energy": -18.40538215637207
+      },
+      "regions": {
+        "21-48": {
+          "start": 21,
+          "end": 48,
+          "name": "A_tail",
+          "values": {
+            "dg_open": 0.0,
+            "dg_open_per_nt": 0.0,
+            "p_unpaired": 1.0,
+            "seed_start": 21.0,
+            "seed_length": 8.0,
+            "seed_dg_open": 0.0,
+            "seed_p_unpaired": 1.0
+          },
+          "detail": {
+            "seed_trials": [
+              {
+                "start": 21,
+                "end": 28,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 22,
+                "end": 29,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 23,
+                "end": 30,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 24,
+                "end": 31,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 25,
+                "end": 32,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 26,
+                "end": 33,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 27,
+                "end": 34,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 28,
+                "end": 35,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 29,
+                "end": 36,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 30,
+                "end": 37,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 31,
+                "end": 38,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 32,
+                "end": 39,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 33,
+                "end": 40,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 34,
+                "end": 41,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 35,
+                "end": 42,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 36,
+                "end": 43,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 37,
+                "end": 44,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 38,
+                "end": 45,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 39,
+                "end": 46,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 40,
+                "end": 47,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 41,
+                "end": 48,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              }
+            ],
+            "seed_selection_note": "lowest-opening-energy permitted placement selected from the evaluated trials"
+          }
+        },
+        "29-48": {
+          "start": 29,
+          "end": 48,
+          "name": "A_tail_20nt",
+          "values": {
+            "dg_open": 0.0,
+            "dg_open_per_nt": 0.0,
+            "p_unpaired": 1.0,
+            "seed_start": 29.0,
+            "seed_length": 8.0,
+            "seed_dg_open": 0.0,
+            "seed_p_unpaired": 1.0
+          },
+          "detail": {
+            "seed_trials": [
+              {
+                "start": 29,
+                "end": 36,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 30,
+                "end": 37,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 31,
+                "end": 38,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 32,
+                "end": 39,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 33,
+                "end": 40,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 34,
+                "end": 41,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 35,
+                "end": 42,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 36,
+                "end": 43,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 37,
+                "end": 44,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 38,
+                "end": 45,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 39,
+                "end": 46,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 40,
+                "end": 47,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 41,
+                "end": 48,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              }
+            ],
+            "seed_selection_note": "lowest-opening-energy permitted placement selected from the evaluated trials"
+          }
+        }
+      },
+      "detail": {
+        "reference_free_energy": -18.40538215637207,
+        "seed_scans": {
+          "A_tail": {
+            "placements": 21,
+            "tested_starts": [
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              31,
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41
+            ],
+            "omitted_starts": [],
+            "trials": [
+              {
+                "start": 21,
+                "end": 28,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 22,
+                "end": 29,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 23,
+                "end": 30,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 24,
+                "end": 31,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 25,
+                "end": 32,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 26,
+                "end": 33,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 27,
+                "end": 34,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 28,
+                "end": 35,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 29,
+                "end": 36,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 30,
+                "end": 37,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 31,
+                "end": 38,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 32,
+                "end": 39,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 33,
+                "end": 40,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 34,
+                "end": 41,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 35,
+                "end": 42,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 36,
+                "end": 43,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 37,
+                "end": 44,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 38,
+                "end": 45,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 39,
+                "end": 46,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 40,
+                "end": 47,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 41,
+                "end": 48,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              }
+            ]
+          },
+          "A_tail_20nt": {
+            "placements": 13,
+            "tested_starts": [
+              29,
+              30,
+              31,
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41
+            ],
+            "omitted_starts": [],
+            "trials": [
+              {
+                "start": 29,
+                "end": 36,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 30,
+                "end": 37,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 31,
+                "end": 38,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 32,
+                "end": 39,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 33,
+                "end": 40,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 34,
+                "end": 41,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 35,
+                "end": 42,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 36,
+                "end": 43,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 37,
+                "end": 44,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 38,
+                "end": 45,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 39,
+                "end": 46,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 40,
+                "end": 47,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              },
+              {
+                "start": 41,
+                "end": 48,
+                "p_unpaired": 1.0,
+                "dg_open_kcal_mol": 0.0,
+                "estimate_kind": "point"
+              }
+            ]
+          }
+        }
+      },
+      "warnings": [],
+      "error": "",
+      "settings": {
+        "temperature_c": 37.0,
+        "param_set": "turner2004",
+        "dangles": 2,
+        "no_lonely_pairs": false,
+        "no_gu": false,
+        "no_gu_closure": false,
+        "gquad": false,
+        "circular": false,
+        "salt_molar": null,
+        "max_bp_span": 48,
+        "global_max_bp_span": null,
+        "window_size": 48,
+        "max_unpaired": 30
+      }
+    },
+    {
+      "tool": "rnafold",
+      "tier": "structure",
+      "status": "ok",
+      "version": "ViennaRNA 2.7.2",
+      "runtime_s": 0.0006,
+      "independence_group": "vienna-global-pf",
+      "estimand": "probability",
+      "model_family": "vienna-turner",
+      "algorithm": "global-partition-function",
+      "conditioning": {
+        "status": "not_requested",
+        "conditioning_id": "unconditioned"
+      },
+      "applied_protocol": {
+        "requested": {
+          "temperature_c": 37.0,
+          "param_set": "turner2004",
+          "dangles": 2,
+          "no_lonely_pairs": false,
+          "no_gu": false,
+          "no_gu_closure": false,
+          "gquad": false,
+          "circular": false,
+          "salt_molar": null,
+          "max_bp_span": 48,
+          "global_max_bp_span": null,
+          "window_size": 48,
+          "max_unpaired": 30
+        },
+        "applied": {
+          "temperature_c": 37.0,
+          "param_set": "turner2004",
+          "dangles": 2,
+          "no_lonely_pairs": false,
+          "no_gu": false,
+          "no_gu_closure": false,
+          "gquad": false,
+          "circular": false,
+          "salt_molar": null,
+          "global_max_bp_span": null
+        },
+        "unsupported": {},
+        "ignored_by_design": {
+          "max_bp_span": "not material for this adapter's declared calculation",
+          "window_size": "not material for this adapter's declared calculation",
+          "max_unpaired": "not material for this adapter's declared calculation"
+        },
+        "compatible_with_requested": true
+      },
+      "globals": {
+        "mfe": -18.399999618530273,
+        "ensemble_free_energy": -18.40538215637207,
+        "mfe_ensemble_gap": 0.005382537841796875,
+        "mean_bp_distance": 0.12664607797487895
+      },
+      "regions": {
+        "21-48": {
+          "start": 21,
+          "end": 48,
+          "name": "A_tail",
+          "values": {
+            "mean_base_unpaired": 1.0,
+            "min_base_unpaired": 1.0,
+            "paired_fraction": 0.0,
+            "shannon_entropy": 0.0
+          },
+          "detail": {
+            "mfe_substructure": "............................"
+          }
+        },
+        "29-48": {
+          "start": 29,
+          "end": 48,
+          "name": "A_tail_20nt",
+          "values": {
+            "mean_base_unpaired": 1.0,
+            "min_base_unpaired": 1.0,
+            "paired_fraction": 0.0,
+            "shannon_entropy": 0.0
+          },
+          "detail": {
+            "mfe_substructure": "...................."
+          }
+        }
+      },
+      "detail": {
+        "mfe_structure": "((((((((....))))))))............................",
+        "pairing_propensity_structure": "((((((((....))))))))............................",
+        "centroid_structure": "((((((((....))))))))............................",
+        "centroid_distance": 0.06354764615316703,
+        "mea_structure": "((((((((....))))))))............................"
+      },
+      "warnings": [],
+      "error": "",
+      "settings": {
+        "temperature_c": 37.0,
+        "param_set": "turner2004",
+        "dangles": 2,
+        "no_lonely_pairs": false,
+        "no_gu": false,
+        "no_gu_closure": false,
+        "gquad": false,
+        "circular": false,
+        "salt_molar": null,
+        "max_bp_span": 48,
+        "global_max_bp_span": null,
+        "window_size": 48,
+        "max_unpaired": 30
+      }
+    }
+  ],
+  "warnings": [],
+  "detail": {
+    "recognition_scoring": {
+      "seed_nucleation_status": "exploratory",
+      "seed_metrics": "ranked",
+      "shortlist_order": "seed_then_opening_cost",
+      "assumption": "no complementary binder class was declared; seed accessibility uses the generic exploratory complementary-strand proxy",
+      "active_criteria": [
+        "seed_p_unpaired",
+        "dg_open_per_nt",
+        "dg_open_spread",
+        "window_length_spread"
+      ]
+    },
+    "unsupported_assumptions": {},
+    "ranking_semantics": "heuristic_rank_score is an uncalibrated structural ranking aid, not a probability of binding, cleavage, or cellular function",
+    "sequence_sha256": "1d1966eed7c0f703c5106fc9fc625f572545c4fbdb252011560bbf7e4d02ec44",
+    "duration_s": 0.031,
+    "duration_human": "0.031 s"
+  }
+}

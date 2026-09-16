@@ -2,6 +2,10 @@
 
 What each file contains, and how to actually read a report.
 
+**If you read only one artifact, open `report.html`.** Start with candidate
+notes, compare seed and full-site opening, then inspect score coverage and
+local/global disagreement. The rank is a navigation aid, not the conclusion.
+
 ---
 
 ## 6.1 The files
@@ -21,7 +25,7 @@ timestamped directory; individual flags write them wherever you point.
 ### Run directories
 
 ```bash
-rnavail scan transcript.fa --window 20 --keep 10 --save-run --run-tag first-pass
+rnavail scan transcript.fa --window 25 --keep 25 --save-run --run-tag first-pass
 # run saved to runs/20260906-161118-first-pass/
 ```
 
@@ -202,7 +206,7 @@ directory and it survives being emailed.
 
 **Then: the ranked summary table**, same columns as the text report.
 
-**Then: one card per candidate**, containing
+**Then: one card per visualized candidate**, containing
 
 1. the subsequence and its heuristic-rank badge
 2. a **properties table** — up to 16 metrics, whichever the candidate has
@@ -216,6 +220,10 @@ directory and it survives being emailed.
 
 Structure layouts come from ViennaRNA's own naview engine — the same one
 behind RNAplot — not a bespoke approximation.
+
+To prevent an unexpectedly huge report, the current CLI caps full visual
+cards at 12 candidates even if `--top` or `--keep` is larger. Ranked data
+remain available in text, TSV and JSON.
 
 Rendering needs matplotlib (`pip install -e .[viz]`). Without it the HTML is
 skipped with a warning rather than failing the run.

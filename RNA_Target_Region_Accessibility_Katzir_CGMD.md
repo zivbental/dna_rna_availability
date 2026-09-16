@@ -1,6 +1,11 @@
 # RNA Target-Region Accessibility for Intermolecular Binding
 
-> **Scope of this revision:** the dynamic molecular-simulation component is based on the **coarse-grained strategy used by Katzir et al. (2026)**. Conventional all-atom MD is not part of the recommended CERNAL accessibility pipeline in this version.
+> **Historical research note — not current product documentation.** This file
+> preserves the broad design exploration that preceded the current code. It
+> discusses interaction and CGMD tiers that are not implemented by `rnavail`,
+> and some proposed scores and thresholds were intentionally rejected. For the
+> current scope and roadmap, read
+> [`docs/09-rna-accessibility-implementation-proposal.md`](docs/09-rna-accessibility-implementation-proposal.md).
 
 ## Executive summary
 
