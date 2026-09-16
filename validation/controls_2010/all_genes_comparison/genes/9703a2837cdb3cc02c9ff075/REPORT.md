@@ -1,0 +1,16 @@
+# YNL064C
+Status: ok. Length: 1524 nt. Measured usable bases: 1268. Mapping: contiguous.
+| Model | Status | Matched bases | Pearson r | Spearman rho |
+| --- | --- | --- | --- | --- |
+| rnaplfold | ok | 1268 | 0.2899 | 0.2806 |
+| rnafold | ok | 1268 | 0.3042 | 0.3091 |
+
+Positive per-base PARS/pairing correlation is the expected direction. Null correlations mean insufficient pairs or a constant signal, not zero correlation.
+
+| Exploratory local-window comparison | Windows | Pearson r | Spearman rho |
+| --- | --- | --- | --- |
+| full_p | 1113 | 0.0370 | -0.0331 |
+| seed_p | 1113 | -0.1451 | -0.0407 |
+| seed_p_vs_seed_pars | 953 | -0.2525 | -0.1385 |
+
+Negative PARS/opening-probability correlation is the expected tendency for the window diagnostics, but PARS does not measure joint opening or binding. Overlapping windows and selected best seeds are not independent observations. Full settings, warnings and status details: [checkpoint](result.json).

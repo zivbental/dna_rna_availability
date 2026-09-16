@@ -1,0 +1,159 @@
+{
+  "transcript_id": "YMR242C",
+  "length": 690,
+  "status": "ok",
+  "models": {
+    "rnaplfold": {
+      "n_pairs": 343,
+      "pearson": 0.2478566616183757,
+      "spearman": 0.2514317944994073,
+      "moments": {
+        "n": 343,
+        "mx": 0.07374635568513119,
+        "my": 0.5173195712777168,
+        "xx": 1945.6585629329463,
+        "yy": 27.618086699901816,
+        "xy": 57.45538049388357
+      },
+      "status": "ok",
+      "protocol": {
+        "scope": "local",
+        "settings": {
+          "temperature_c": 37.0,
+          "param_set": "turner2004",
+          "dangles": 2,
+          "no_lonely_pairs": false,
+          "no_gu": false,
+          "no_gu_closure": false,
+          "gquad": false,
+          "circular": false,
+          "salt_molar": null,
+          "max_bp_span": 150,
+          "global_max_bp_span": null,
+          "window_size": 200,
+          "max_unpaired": 30
+        },
+        "actual_max_unpaired": 20,
+        "version": "ViennaRNA 2.7.2"
+      }
+    },
+    "rnafold": {
+      "n_pairs": 343,
+      "pearson": 0.05724063597774431,
+      "spearman": 0.07711632981082532,
+      "moments": {
+        "n": 343,
+        "mx": 0.07374635568513119,
+        "my": 0.5853499996786211,
+        "xx": 1945.6585629329463,
+        "yy": 40.489570680115,
+        "xy": 16.066058766478783
+      },
+      "status": "ok",
+      "protocol": {
+        "scope": "global",
+        "applied_protocol": {
+          "requested": {
+            "temperature_c": 37.0,
+            "param_set": "turner2004",
+            "dangles": 2,
+            "no_lonely_pairs": false,
+            "no_gu": false,
+            "no_gu_closure": false,
+            "gquad": false,
+            "circular": false,
+            "salt_molar": null,
+            "max_bp_span": 150,
+            "global_max_bp_span": null,
+            "window_size": 200,
+            "max_unpaired": 30
+          },
+          "applied": {
+            "temperature_c": 37.0,
+            "param_set": "turner2004",
+            "dangles": 2,
+            "no_lonely_pairs": false,
+            "no_gu": false,
+            "no_gu_closure": false,
+            "gquad": false,
+            "circular": false,
+            "salt_molar": null,
+            "global_max_bp_span": null
+          },
+          "unsupported": {},
+          "ignored_by_design": {
+            "max_bp_span": "not material for this adapter's declared calculation",
+            "window_size": "not material for this adapter's declared calculation",
+            "max_unpaired": "not material for this adapter's declared calculation"
+          },
+          "compatible_with_requested": true
+        },
+        "version": "ViennaRNA 2.7.2",
+        "warnings": [
+          "MFE and ensemble free energy differ by more than 0.5 kcal/mol (MFE-state probability 0.000): substantial ensemble weight lies outside the MFE state"
+        ]
+      }
+    }
+  },
+  "windows": {
+    "full_p": {
+      "n_pairs": 203,
+      "pearson": -0.42372381972867956,
+      "spearman": -0.24330575121804154,
+      "moments": {
+        "n": 203,
+        "mx": -0.0636366533727829,
+        "my": 0.008917313374845713,
+        "xx": 216.74252168730635,
+        "yy": 0.07313295261759412,
+        "xy": -1.6869860580362066
+      }
+    },
+    "seed_p": {
+      "n_pairs": 203,
+      "pearson": -0.14837378441153373,
+      "spearman": -0.27966967671741344,
+      "moments": {
+        "n": 203,
+        "mx": -0.0636366533727829,
+        "my": 0.2597343985264644,
+        "xx": 216.74252168730635,
+        "yy": 9.507336616984604,
+        "xy": -6.735326762589766
+      }
+    },
+    "seed_p_vs_seed_pars": {
+      "n_pairs": 157,
+      "pearson": -0.24989838477188267,
+      "spearman": -0.38111664511671917,
+      "moments": {
+        "n": 157,
+        "mx": -0.6379182211101003,
+        "my": 0.2617424627618858,
+        "xx": 290.0594471340097,
+        "yy": 8.391068941722331,
+        "xy": -12.328652203830979
+      }
+    }
+  },
+  "fingerprint": "634e11f4897f956f45a093c30f5cebb0c07a7c5b5859234a2388dc1c24c75c6e",
+  "sequence_sha256": "e62e43a6fee3b0c60659258b92756172d0efc83fb51cd08e8bf123bbb135b19c",
+  "n_measured": 343,
+  "coverage": 0.4971014492753623,
+  "n_antisense_measured": 0,
+  "chromosome": "13",
+  "genome_start": 754309,
+  "genome_end": 753143,
+  "mean_pars": 0.0737463556851312,
+  "mapping_mode": "verified_annotated_exons_and_UTRs",
+  "window_protocol": {
+    "scope": "local",
+    "window_size": 200,
+    "max_bp_span": 150,
+    "footprint": 20,
+    "seed_length": 8,
+    "step": 1,
+    "seed_mode": "best single segment among all contiguous placements"
+  },
+  "runtime_s": 1.1760095610002281
+}

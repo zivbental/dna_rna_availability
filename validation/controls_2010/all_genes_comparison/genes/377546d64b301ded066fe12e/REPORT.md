@@ -1,0 +1,16 @@
+# YOR347C
+Status: ok. Length: 1652 nt. Measured usable bases: 687. Mapping: contiguous.
+| Model | Status | Matched bases | Pearson r | Spearman rho |
+| --- | --- | --- | --- | --- |
+| rnaplfold | ok | 687 | 0.3038 | 0.2869 |
+| rnafold | ok | 687 | 0.2601 | 0.2592 |
+
+Positive per-base PARS/pairing correlation is the expected direction. Null correlations mean insufficient pairs or a constant signal, not zero correlation.
+
+| Exploratory local-window comparison | Windows | Pearson r | Spearman rho |
+| --- | --- | --- | --- |
+| full_p | 129 | 0.0034 | -0.1474 |
+| seed_p | 129 | 0.0736 | -0.1114 |
+| seed_p_vs_seed_pars | 93 | 0.1254 | 0.0039 |
+
+Negative PARS/opening-probability correlation is the expected tendency for the window diagnostics, but PARS does not measure joint opening or binding. Overlapping windows and selected best seeds are not independent observations. Full settings, warnings and status details: [checkpoint](result.json).
