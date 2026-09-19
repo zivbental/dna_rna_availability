@@ -36,16 +36,16 @@ Before implementation, preserve the exact untracked active runner `validation/mu
 
 ### New Phase-0 candidates
 
-1. **RNAstructure partition 6.6** — an exact global, pseudoknot-free thermodynamic ensemble implemented independently of ViennaRNA. `partition` produces a partition save file and `ProbabilityPlot` exposes base-pair probabilities.[1][2] Compute `q_i = 1 - Σ_j p_ij`. Pin the isolated-pair policy and use no SHAPE, constraints, or experimental bonuses.
-2. **CONTRAfold 2.02** — an exact conditional log-linear structure ensemble trained on known structures rather than Turner free energies.[3] Parse complete posterior pair probabilities and compute `q_i = 1 - Σ_j p_ij`.
+1. **RNAstructure partition 6.6** — an exact global, pseudoknot-free thermodynamic ensemble implemented independently of ViennaRNA. Pin RNA alphabet/data-table hashes, `310.15 K`, coaxial stacking enabled, isolated pairs forbidden (omit `--isolated`), no maximum pair distance, and no SHAPE, constraints, or experimental bonuses. `ProbabilityPlot --text` reports `x_ij = -log10(p_ij)`, not `p_ij`; parse every pair as `p_ij = 10^(-x_ij)`, add that probability to both endpoints, then compute `q_i = 1 - Σ_j p_ij`.[1][2] Use an explicitly untruncated text range and prove on fixtures against RNAstructure's pair-probability API that all nonzero reported mass is retained; otherwise this adapter is ineligible.
+2. **CONTRAfold 2.02** — an exact conditional log-linear structure ensemble trained on known structures rather than Turner free energies.[3] Invoke complete posterior output with threshold `0`, not the repository adapter's current `0.001`, parse every pair for both endpoints, and compute `q_i = 1 - Σ_j p_ij`. Any implementation that cannot demonstrate complete posterior mass is ineligible.
 3. **LinearPartition-C** — beam-pruned, left-to-right partition inference with CONTRAfold-family parameters. The implementation emits base-pair probabilities, supports a fixed beam size, and is designed for practical linear-time scaling.[4][5] Pin commit `b450fb3e63189073b68d385589035f992080aa3a`, beam 100, and output cutoff 0.0.
-4. **EternaFold 1.3.1** — a CONTRAfold-family model trained by multitask learning that included high-throughput probing and binding data.[6][7] Use `EternaFoldParams.v1`, no evidence input, and complete posterior output. It can enter the confirmatory ranking only after exact-sequence and homology-overlap auditing.
-5. **LinearCapR 1.0.4** — an exploratory scalable structural-context ensemble. Its primary score is fixed prospectively as `q_i = 1 - P(Stem_i)`; loop-context combinations will not be selected after seeing outcomes.
-6. **MXfold2 0.1.2 pilot** — a learned structure model with thermodynamic regularization and published source/model distributions.[8][9] It is eligible only if a numerical pilot demonstrates that its base-pair output is a coherent probability matrix within a predeclared tolerance.
+4. **EternaFold 1.3.1** — a CONTRAfold-family model trained by multitask learning that included high-throughput probing and binding data.[6][7] Use `EternaFoldParams.v1`, no evidence input, and posterior threshold `0`; do not reuse the current positive-cutoff adapter. It can enter the confirmatory ranking only after complete-mass validation and exact-sequence/homology-overlap auditing.
+5. **LinearCapR 1.0.4** — an exploratory scalable structural-context ensemble. Pin Turner 2004 tables, beam 100, and the implementation's fixed unpaired-run cap. Its primary score is fixed prospectively as `q_i = 1 - P(Stem_i)` and is accepted only when all six context probabilities sum to one within `1e-6` at every position; loop-context combinations will not be selected after seeing outcomes.
+6. **MXfold2 0.1.2 pilot only** — a learned structure model with thermodynamic regularization and published source/model distributions.[8][9] Its documented float32 base-pair-probability instability prevents confirmatory use unless **every** prediction passes the matrix invariants below.[14] No clipping or renormalization is permitted. A double-precision patch is a different, separately versioned predictor with its own artifact and adapter hashes.
 
 ### Controls and deferred tools
 
-- **LinearPartition-V** is an approximation/inference control for Vienna-family parameters, not an independent model.
+- **LinearPartition-C** is an approximate-inference control within the CONTRAfold parameter family; **LinearPartition-V** is the corresponding Vienna-family control; and **LinearCapR** is a Turner-family context-marginal model. They are useful predictors but not independent biological-model votes. Report both predictor-level and model-family-level summaries.
 - **CROSS** is a direct structural-propensity predictor, but its assay-specific models were trained on yeast PARS and mouse icSHAPE—the same assay/organism combinations represented here.[10][11] It may be shown only as a training-contaminated diagnostic unless an overlap-excluded evaluation can be established.
 - **ShaKer** is a direct SHAPE-like predictor, but checkpoint, licensing, training-overlap, and runtime questions must be resolved before inclusion.[12][13]
 - CapR, NUPACK, RNAsoft/SimFold, SPOT-RNA, UFold, RNA-FM, RiNALMo, and RNAsnap2 remain secondary candidates. They are excluded from the first headline ranking when their output is not a normalized ensemble probability, their endpoint differs from unpairedness, their licensing or deployment is not reproducible, or their compute/length limits prevent the shared cohort.
@@ -59,15 +59,17 @@ Every core predictor must produce a full-length array:
 per_base_unpaired[i] ∈ [0, 1] or null with an explicit reason
 ```
 
-For normalized base-pair posterior matrices, use `q_i = 1 - Σ_j p_ij`. For structural-context models, use `q_i = 1 - P(Stem_i)`. Any omitted probability threshold must be zero or its omitted mass must be accounted for; silently dropping low-probability pairs biases unpairedness upward.
+For normalized base-pair posterior matrices, use `q_i = 1 - Σ_j p_ij`. Every parsed matrix must be finite, symmetric within absolute tolerance `1e-6`, have diagonal magnitude at most `1e-8`, contain no value below `-1e-8`, have every row sum at most `1 + 1e-6`, and yield `q_i ∈ [0,1]` without clipping or renormalization. A matrix that violates any invariant is a failed prediction, not repairable data. For structural-context models, use `q_i = 1 - P(Stem_i)` only when every context value is finite/nonnegative and the six contexts sum to one within `1e-6`. Any pair-output threshold must be exactly zero unless a validated omitted-mass bound below `1e-6` per nucleotide is recorded; silently dropping low-probability pairs biases unpairedness upward.
+
+Golden tests must compare `q_i` with an independent short-sequence implementation or tool API where available, assert one-based coordinate conversion, and prove each pair contributes to both endpoints exactly once. Exact, beam-pruned, local-window, learned, and Turner-family results remain separately labeled.
 
 For each existing eligible 20-nt window, the primary prediction is the arithmetic mean of `q_i` at the **exact experimentally measured assay-observable positions**. DMS remains A/C-only. icSHAPE, SHAPE, and PARS use all bases. Existing direction normalization, minimum four measured bases, and 80% observable-base coverage remain frozen. The full-window mean, seed probability, joint 20-nt opening probability, MFE binary state, solvent accessibility, and contact confidence are separate estimands and cannot substitute for this primary score.
 
 ## Predictor contract and cache
 
-Introduce versioned `PredictorSpec` and `PredictorResult` records. The spec records predictor ID, model family, adapter, executable/container digest, exact version, source, license, model/parameter SHA-256, frozen options, alphabet, output semantics, length limit, timeout, thread count, determinism, training provenance, and overlap status.
+Introduce versioned `PredictorSpec`, immutable `PredictionPayload`, append-only `PredictionAttempt`, and append-only `CacheAccessEvent` records. The spec records predictor ID, model family, adapter/parser source digest, executable/container digest, exact version, source, license, complete environment lock or container digest, relevant shared-library/data-table hashes, model/parameter SHA-256, frozen options, alphabet, output semantics, length limit, timeout, thread count, determinism, training provenance, and overlap status. Its canonical sorted-key digest is the scientific implementation identity; a parser or coordinate-conversion change must produce a new identity.
 
-Each invocation receives only normalized RNA sequence, sequence SHA-256, predictor configuration, and resource limits—never dataset identity or probing measurements. A result records status, full-length values, null reasons, exact command/profile, stdout/stderr digests, elapsed time, CPU time, peak RSS, warnings, and provenance.
+Each invocation receives only normalized RNA sequence, sequence SHA-256, predictor configuration, and resource limits—never dataset identity or probing measurements. A successful immutable payload contains only deterministic scientific values, null reasons, exact applied profile, warnings, and scientific provenance. Attempts separately record success/failure, command and stdout/stderr digests, elapsed time, CPU time, peak RSS, host/runtime identity, and retry lineage. Cache-access events separately record hit/miss and warm-read latency. Only successful payloads are cached; timeout, corruption, and tool failures remain retryable attempts and can never masquerade as zero or a permanent cached result.
 
 Use independent per-predictor immutable cache entries:
 
@@ -75,26 +77,28 @@ Use independent per-predictor immutable cache entries:
 <output>/predictors/<predictor_id>/cache/<prefix>/<key>.json.gz
 ```
 
-where `key` hashes the interface schema, sequence SHA-256, predictor ID, executable/container digest, model/parameter digest, version, and frozen options. Validate the key, sequence, length, value range, payload checksum, and provenance on every read. Write atomically under a per-key lock. Dataset and experimental values are intentionally absent so identical sequences share predictions across conditions.
+where `key` hashes the interface schema, sequence SHA-256, and complete canonical `PredictorSpec` digest, including adapter/parser source and runtime dependency closure. Use canonical sorted-key JSON, normalized option types, and deterministic gzip metadata. Validate against the expected spec—not self-reported provenance—and verify key, sequence, length, ranges, payload checksum, and provenance on every read. Write atomically under a per-key lock. Dataset and experimental values are intentionally absent so identical sequences share predictions across conditions.
 
-A read-only importer may extract validated RNAplfold/RNAfold arrays from the completed legacy cache. It must preserve source provenance and must not mutate or warm-write the legacy output.
+A read-only importer is mandatory for every validated completed RNAplfold/RNAfold legacy entry. It records source-file and source-payload hashes, proves imported arrays and protocols match exactly, and never mutates or warm-writes the legacy output. Tests must assert that baseline executables are not invoked for imported keys; only entries proven absent or invalid after the completed import may be recomputed under a separately recorded attempt.
 
 ## Fair comparison and winner rule
 
 All headline comparisons are computed separately within each of the seven datasets.
 
-1. Build a tool-independent eligible-window table from the existing prepared records and hashes.
-2. A predictor qualifies for the core ranking only if it produces finite primary scores for at least 90% of eligible transcripts **and** windows in every dataset.
-3. Build one all-core shared cohort per dataset. Every ranked predictor must have identical transcript, window, measured-position, and experimental-value counts. Persist a cohort fingerprint; any denominator mismatch is an error.
+1. Build a predictor-independent eligibility index from the existing prepared records and hashes. The primary transcript denominator contains normalized ACGU-only records with at least one assay-eligible window; non-ACGU records and records with zero eligible windows are excluded **before** prediction and reported separately. Predictor length limits, timeouts, execution failures, missing output positions, and invalid probabilities are predictor failures, not removals from this denominator. A predictor covers a transcript only when its full-length payload is valid and every measured position used by that transcript's eligible windows is finite. A window is covered only when all of its measured positions are finite; one null makes that predictor/window unavailable.
+2. A predictor qualifies provisionally for the core ranking only if it produces finite primary scores for at least 90% of eligible transcripts **and** 90% of eligible windows in every dataset. Qualification is computed before any outcome correlation is inspected.
+3. Build one all-core shared cohort per dataset. It must retain at least 80% of predictor-independent eligible transcripts and windows, plus at least 70% of eligible windows in each predeclared sequence-length stratum. Every ranked predictor must then have identical transcript, window, measured-position, and experimental-value identities and counts. Persist an eligibility fingerprint and a shared-cohort fingerprint; any identity/count mismatch is an error. If the intersection misses a threshold, there is no headline all-core ranking—only explicitly secondary maximal-coverage and pairwise analyses. Do not remove a tool post hoc based on its correlation.
 4. Report:
    - pooled window Pearson;
    - median within-transcript Spearman for transcripts with at least 20 shared windows;
    - pooled per-base Pearson and median within-transcript per-base Spearman for true marginal-probability tools;
    - eligible and retained transcript/window/base counts, length exclusions, null positions, failures, timeouts, and coverage;
    - cold/warm wall time, CPU time, peak RSS, nucleotides/second, cache size, and cache-hit rate.
-5. Compute paired 95% intervals with 2,000 deterministic transcript-level bootstrap replicates. Add a 200-nt within-transcript block-bootstrap sensitivity analysis because overlapping windows are not independent.
-6. Rank tools independently for Pearson and Spearman within each dataset. Across datasets, report average rank, win count, and decisive-win count; never pool raw assay values or observations across technologies, organisms, or conditions.
-7. A tool is called best only if the predeclared shared-cohort ranking supports it. If Pearson and Spearman winners differ, the paired winner-minus-runner-up interval includes zero, training-overlap exclusion changes the ordering, or coverage falls below threshold, report that no single robust winner was established.
+5. Compute paired 95% intervals with 2,000 deterministic replicates. Resample transcript clusters with replacement and recompute each complete metric. The 200-nt sensitivity divides one-based transcript coordinates into fixed `[1,200], [201,400], ...` blocks and resamples blocks with replacement inside each sampled transcript. Predictor-difference intervals use the same resampled units; never infer a difference from overlap of separate confidence intervals. The pseudorandom seed is the unsigned integer encoded by the first eight bytes of `SHA-256(metric_schema_version || dataset_or_study_id || metric_id || cohort_fingerprint || "2000")`; use one pinned generator/library version and the linear-interpolated 2.5th/97.5th percentiles. Undefined correlations from zero variance remain null and their replicate counts are reported.
+6. Rank tools independently for Pearson and Spearman within each dataset, using average ranks for exact ties. Report each paired condition contrast separately: yeast DMS in vitro/in vivo, mouse icSHAPE in vitro/in vivo, and *E. coli* SHAPE cell-free/in-cell. These paired conditions share sequence-only predictions and quantify environment/assay dependence rather than independent model evidence.
+7. The primary overall endpoint is a **study-balanced Spearman score**. First average the condition-level median within-transcript Spearman values within each of four study groups (yeast DMS, mouse icSHAPE, *E. coli* SHAPE, and yeast PARS), giving paired conditions equal weight; then average the four study scores equally. A synchronized hierarchical bootstrap resamples shared sequence/transcript identities within paired studies, recomputes condition and study metrics, and produces the paired overall winner-minus-runner-up interval. Pearson receives an analogous secondary study-balanced summary. Raw assay values and observations are never pooled.
+8. A predictor is called the robust overall winner only if it has the highest primary study-balanced Spearman score, its paired 95% interval over the runner-up excludes zero, it remains first in all four leave-one-study-out analyses, the study-balanced Pearson winner agrees, model-family and training-overlap-excluded sensitivities do not change the winner, and all coverage thresholds pass. Otherwise report per-dataset/per-study winners and state that no single robust overall winner was established. Predictor-level and model-family-level ranks/wins are both reported so related parameter families cannot masquerade as independent votes.
+9. Add predeclared nucleotide-identity-stratified and transcript-centered sensitivity analyses. DMS observes A/C, SHAPE/icSHAPE reflects local flexibility rather than pure unpairedness, and PARS is a signed cleavage ratio; these analyses distinguish structural association from nucleotide composition and between-transcript scale effects.
 
 EternaBench has already shown that learned statistical packages can outperform commonly used thermodynamic packages for some ensemble-oriented tasks, which motivates this comparison but does not predict the winner on these seven datasets.[7] LinearPartition's published speed and structure benchmarks likewise do not establish probing-reactivity performance here.[5]
 
@@ -108,26 +112,27 @@ Before confirmatory use of any learned model:
 - report overlap by dataset and repeat metrics after excluding flagged transcripts;
 - mark training provenance as unknown when corpora cannot be recovered.
 
-Unknown or material overlap excludes a learned model from a held-out winner claim. Sequence-only execution is necessary but not sufficient to establish independence from training data.
+Exact or near-global overlap flags the affected transcripts for exclusion from the confirmatory sensitivity analysis. Local matches are reported and receive a separate exclusion sensitivity. A learned model is disqualified from a held-out overall-winner claim if training provenance is unknown, if exact/near-global overlap exceeds 10% of eligible transcripts or 20% of eligible windows in any dataset, or if excluding any flagged class changes the winner. It may still be shown as a labeled in-training/exploratory comparator. Sequence-only execution is necessary but not sufficient to establish independence from training data.
 
 ## Test-first delivery phases
 
-1. **Preservation:** after the active run completes, snapshot its exact code, untracked runner hash, manifest, prepared hashes, tools, and final counts.
-2. **Contract tests:** RED-GREEN-REFACTOR tests for specs/results, cache keys, array validation, null handling, corruption rejection, atomic writes, and measurement-blind invocation.
-3. **Adapter tests:** golden parsers and real executable smoke tests for every pinned candidate, including complete probability mass, one-based coordinates, ambiguous input, length limits, timeout, and version/parameter capture.
-4. **Legacy importer:** verify sampled imported RNAplfold/RNAfold arrays exactly match source entries and leave the source output unchanged.
-5. **Eligibility and cohort tests:** cover PARS sign reversal, DMS masking, missing versus zero, coverage, one-based coordinates, shared-cohort equality, whole-transcript failures, and cohort fingerprints.
-6. **Metric tests:** hand-calculated Pearson, Spearman, ranks/ties/wins, paired transcript bootstrap, and block bootstrap.
-7. **Phase 0 runtime:** on an idle host, run a deterministic length-stratified 18-sequence panel. For each candidate, collect three cold runs in balanced order and one warm-cache run with one process and one tool thread.
-8. **Pilot science:** run the Phase-0 panel plus 25 deterministic length-stratified eligible transcripts per dataset. Complete provenance, overlap audit, coordinate inspection, and all metrics before full scale.
-9. **Full run:** execute independently resumable predictor shards over unique sequence hashes, freeze the predictor manifest, and compute only missing keys.
-10. **Release verification:** rebuild all metrics from immutable caches in a fresh output and require identical cohort fingerprints, metric JSON, and report checksums.
+1. **Preservation:** after the active run completes, snapshot its exact code, untracked runner hash, manifest, prepared hashes, tools, runtime environment, and final record/cache counts into a checksummed preservation manifest.
+2. **Eligibility freeze:** materialize a canonical sorted eligibility artifact keyed by `(dataset_id, normalized_sequence_sha256, stable_record_id, one_based_window_start, measured_position_vector)` with experimental-value and prepared-source hashes. The artifact records all excluded non-ACGU/zero-window records, direction and nucleotide mask, and length strata. Freeze its checksum before installing or executing a candidate.
+3. **Contract tests:** RED-GREEN-REFACTOR tests for specs/payloads/attempts/events, spec and cache identities, array/matrix validation, retryable failures, null handling, corruption rejection, deterministic serialization, atomic writes, concurrent readers/writers, and measurement-blind invocation.
+4. **Adapter tests:** golden parsers and real executable smoke tests for every pinned candidate, including complete probability mass, RNAstructure `10^(-x)` conversion, both-endpoint accumulation, one-based coordinates, matrix/context invariants, ambiguous input, length limits, timeout, and version/parameter/dependency capture.
+5. **Legacy importer:** import every valid completed RNAplfold/RNAfold entry, verify arrays/protocols and source hashes exactly, prove baseline executables are not called for imported keys, and leave the source output byte-for-byte unchanged.
+6. **Eligibility and cohort tests:** cover PARS sign reversal, DMS masking, missing versus zero, non-ACGU records, zero-window records, predictor length/failure accounting, one-based coordinates, 90/80/70% thresholds, shared identity/count equality, and eligibility/cohort fingerprints.
+7. **Metric tests:** use hand-calculated Pearson, Spearman, average tie ranks, paired condition contrasts, study-balanced aggregation, synchronized hierarchical bootstrap, exact deterministic seeds, percentile extraction, zero-variance/null behavior, and 200-nt block boundaries.
+8. **Phase 0 runtime:** before any tool outcome metric is computed, freeze `phase0-selection.json` from the eligibility artifact. For each of the three organisms, sort unique eligible sequences by `(length, sha256)` and choose the nearest unused record to empirical length quantiles `0%, 20%, 40%, 60%, 80%, 100%`, breaking ties by SHA-256; this yields 18 pinned sequence hashes. For each candidate, collect three application-cache-cold invocations in a hash-seeded balanced order and one warm payload-read measurement with one process and one tool thread. Cold means a fresh dedicated payload-cache root; operating-system page caches are not flushed.
+9. **Pilot science:** run the Phase-0 panel plus 25 deterministic length-stratified eligible transcripts per dataset. Complete provenance, overlap audit, coordinate inspection, coverage/cohort gates, and all metrics before full scale.
+10. **Full run:** execute independently resumable predictor shards over unique sequence hashes, freeze the predictor manifest, and compute only missing successful payload keys while appending retry attempts.
+11. **Release verification:** rebuild all metrics from immutable caches in a fresh output and require identical eligibility/cohort fingerprints, metric JSON, and report checksums across worker counts and reversed input order.
 
 ## Resource and feasibility gates
 
-No heavy work starts while the current benchmark is active. The idle gate requires no benchmark workers, load average below 2 for five minutes, at least 10 GiB available RAM, and stable swap use.
+No heavy work starts while the current benchmark is active. Sample the host once per minute for five consecutive minutes; every sample must show zero current-benchmark or predictor workers, one-minute load average below `2.0`, and at least `10 GiB` available RAM, while used swap changes by no more than `0.1 GiB` over the gate. Save the gate samples in the run manifest.
 
-Phase 0 uses one predictor process and one thread. A predictor/length stratum is quarantined before outcome correlations are inspected if one invocation exceeds 8 GiB RSS or two hours, or if the safe projected full run exceeds seven days. Production concurrency is computed per predictor from measured p95 RSS while reserving at least 4 GiB RAM and four logical CPUs. Memory-heavy global predictors run in separate waves unless Phase 0 proves co-scheduling safe.
+Phase 0 uses one predictor process and one tool thread with `OMP_NUM_THREADS=MKL_NUM_THREADS=OPENBLAS_NUM_THREADS=1`. Record hostname, CPU model, logical/physical CPU counts, RAM/swap, kernel/WSL versions, locale, environment lock/container digest, executable and `ldd` fingerprints, command, working directory, and all thread variables. For each panel point, the cold wall-time estimate is the maximum of its three application-cache-cold attempts; form a monotone piecewise-linear upper envelope in log-length/log-time space, sum its predicted time over every unique eligible sequence, multiply by `1.25`, and divide only by the memory-safe planned worker count. Nearest-rank p95 RSS over the three attempts (therefore their maximum) sets `workers = min(logical_cpus - 4, floor((available_RAM - 4 GiB) / p95_RSS))`, never below one. A predictor/length stratum is quarantined before outcome correlations are inspected if an invocation exceeds `8 GiB` RSS or two hours, or if the projected full run exceeds seven wall-clock days. Memory-heavy global predictors run in separate waves unless Phase 0 proves co-scheduling safe.
 
 The eventual output root will be separate from the active run, for example:
 
@@ -138,14 +143,17 @@ The eventual output root will be separate from the active run, for example:
 ## Acceptance criteria
 
 - The active checkout, process tree, prepared data, and `results_parallel` remain unmodified.
-- Every adapter records exact binary/model/config hashes and passes unit, parser, and real-executable tests.
-- Cold and warm scientific outputs are identical apart from timing/cache metadata.
-- Existing experimental preparation is reused read-only and its hashes are verified.
-- Headline tools meet the 90% coverage threshold and have identical shared-cohort denominators per dataset.
-- Every dataset reports Pearson, Spearman, uncertainty intervals, coverage, failures, and resources.
-- Cross-dataset summaries use ranks and wins, never pooled assay-scale correlations.
+- Every adapter records exact binary/model/config/dependency/adapter hashes and passes unit, golden-parser, complete-mass, coordinate, matrix/context-invariant, and real-executable tests.
+- Successful scientific payloads are immutable and byte-deterministic; failures are retryable append-only attempts; warm cache reads create events rather than mutate payloads.
+- Cold and warm scientific outputs are identical; only separate attempt/cache-event telemetry differs.
+- Existing experimental preparation is reused read-only, its hashes are verified, and a canonical eligibility artifact is frozen before tool execution.
+- Every valid completed RNAplfold/RNAfold entry is imported exactly, source hashes are retained, and imported keys never invoke baseline executables.
+- Headline tools each meet 90% transcript/window coverage; the all-core shared cohort meets 80% transcript/window and 70% per-length-stratum retention; all ranked tools have identical shared identities and denominators per dataset.
+- Every dataset reports Pearson, Spearman, paired uncertainty intervals, coverage, failures, and resources; matrix failures are never clipped or renormalized.
+- Cross-study summaries use the frozen study-balanced rule, paired condition contrasts, and model-family sensitivity; raw assay values are never pooled.
 - Learned-model overlap and overlap-excluded sensitivity results are reported.
-- Interrupt/resume and worker/input-order invariance are verified.
+- Interrupt/resume, failed-attempt retry, concurrent cache access, and worker/input-order invariance are verified.
+- A robust-winner claim passes the paired overall interval, leave-one-study-out, Pearson-agreement, model-family, training-overlap, and coverage gates; otherwise the report explicitly states that no single robust overall winner was established.
 - Final claims remain limited to association with assay-specific structural-reactivity proxies.
 
 ## Sources
@@ -163,3 +171,4 @@ The eventual output root will be separate from the active run, for example:
 [11] https://tools.tartaglialab.com/static/algorithms/cross/tutorial.html
 [12] https://github.com/BackofenLab/ShaKer
 [13] https://pmc.ncbi.nlm.nih.gov/articles/PMC6612843
+[14] https://github.com/mxfold/mxfold2/issues/27 — MXfold2 issue 27: BPP numerical behavior
